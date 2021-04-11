@@ -23,7 +23,7 @@ $(NAME):
 			@echo "${RED}[...Haciendo CLEAN del a.out...]${RESET}"
 			@rm -rf a.out
 			@echo "${CYAN}[...Iniciando compilacion...]${GRIS}"
-			$(GCC) $(SRCS) $(FLAGS) -o $(NAME)
+			$(GCC) -g3 $(SRCS) $(FLAGS) -o $(NAME)
 			@echo "${RED}[.oOo.oOo.oOo.oOo.]${RESET}"
 			@echo "${YELLOW}[ C O M P I L A O ]${RESET}"
 			@echo "${PURPLE}[.oOo.oOo.oOo.oOo.]${RESET}"
