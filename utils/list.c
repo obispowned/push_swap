@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:39 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/10 12:54:37 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/11 18:43:08 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,14 @@ t_stack		*ft_lstlast(t_stack *lst)
 	}
 	else
 		return (0);
+}
+
+void		lst_del_first(t_stack *stack) /* falta comprobacion */
+{
+	t_stack *aux;
+
+	aux = stack->next;
+	stack->content = 0;
+	free(stack);
+	stack = aux;
 }
