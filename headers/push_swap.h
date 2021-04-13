@@ -28,21 +28,8 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "error_msg.h"
+#include "get_next_line.h"
 
-
-void	    *ft_memalloc(size_t size);
-
-int	    	args(int argc, char **argv, t_check *check);
-int	    	each_arg(int argc, char **argv, t_check *check);
-void    	set_norm(int *ar, size_t n, t_check *check);
-int		    normalise(t_check *check, size_t n);
-int		    sort_args(t_check *check, char *str);
-
-int			acending(int a, int b);
-void		del_extra(t_stack *lst);
-void		free_stack(t_stack *stack);
-void		free_mem(t_check *check);
-void		free_ar(char **ar, int n);
-int			ascending(int a, int b);
+int				sa(t_check *check);
 
 #endif

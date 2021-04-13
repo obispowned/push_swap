@@ -23,7 +23,7 @@ t_stack		*ft_lstnew(int content)
 	return (new);
 }
 
-void	ft_lstadd_front(t_stack **alst, t_stack *new)
+void		ft_lstadd_front(t_stack **alst, t_stack *new)
 {
 	t_stack	*aux;
 
@@ -32,7 +32,7 @@ void	ft_lstadd_front(t_stack **alst, t_stack *new)
 	new->next = aux;
 }
 
-void			ft_lstadd_back(t_stack **alst, t_stack *new)
+void		ft_lstadd_back(t_stack **alst, t_stack *new)
 {
 	t_stack		*p;
 
@@ -83,12 +83,17 @@ t_stack		*ft_lstlast(t_stack *lst)
 		return (0);
 }
 
-void		lst_del_first(t_stack *stack) /* falta comprobacion */
+t_stack		*lst_del_first(t_stack *stack) /* falta comprobacion */
 {
 	t_stack *aux;
 
-	aux = stack->next;
-	stack->content = 0;
-	free(stack);
-	stack = aux;
+	if (stack != NULL)
+	{
+		aux = stack;
+		stack = stack->next;
+		free(aux);
+	}
+	else
+		print_error("Lista vacia");
+	return (stack);
 }

@@ -14,6 +14,11 @@
 
 int				ra(t_check *check)
 {
+    int         aux;
+
+    aux = check->a->content;
+    check->a = lst_del_first(check->a);
+    ft_lstadd_back(&check->a, ft_lstnew(aux));
 
 }
 

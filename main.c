@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
@@ -89,11 +91,41 @@ int			check_args(int argc, char **argv)
 	return (0);
 }
 
+void		check_stdin(t_check *check)
+{
+	int		size;
+	char 	*line;
+
+	while ((size = get_next_line(0, &line)) > 0)
+	{ //sin los else me escribe directo
+		if ((strcmp((const char *)line, "sa") == 0) ||
+		(strcmp((const char *)line, "sb") == 0) ||
+		(strcmp((const char *)line, "ss") == 0))
+			printf("sx ");
+		else if ((strcmp((const char *)line, "ra") == 0) ||
+		(strcmp((const char *)line, "rb") == 0) ||
+		(strcmp((const char *)line, "rr") == 0))
+			printf("rx ");
+		else if ((strcmp((const char *)line, "rra") == 0) ||
+		(strcmp((const char *)line, "rrb") == 0) ||
+		(strcmp((const char *)line, "rrr") == 0))
+			printf("rrx ");
+		else if ((strcmp((const char *)line, "pa") == 0) ||
+		(strcmp((const char *)line, "pb") == 0))
+			printf("px ");
+		else
+			break;
+		free(line);
+	}
+}
+
 int         main(int argc, char **argv)
 {
     t_check *check;
 	char 	**file;
+	char 	*scanner = malloc(sizeof(char) * 3);
 
+	scanner[2] = '\0';
 	file = NULL;
     check = (t_check *)malloc(sizeof(t_check));
 	if (check_args(argc, argv) == 1)
@@ -109,7 +141,17 @@ int         main(int argc, char **argv)
 			return (print_error("Error\n"));
 	}
 	print_list(check->a);
-
+	check_stdin(check);
+/*	while(1)
+	{
+		ret = scanf((const char*)scanner);
+		if(ret == 0)
+			break;
+		if (strcmp(scanner, "sa") == 0)
+			sa(check);
+		print_list(check->a);
+	}
+	*/
 	//system ("leaks push_swap");
 	return (0);
 }
