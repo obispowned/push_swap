@@ -36,6 +36,6 @@ clean :
 	@echo "\033[0;31m[BORRANDO BASURA...]"
 	$(RM) $(OBJS)
 
-re:				fclean all
+re:		fclean all
 
 .PHONY:	clean all
