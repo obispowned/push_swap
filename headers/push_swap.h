@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:37 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/09 18:33:51 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/14 14:01:22 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,41 @@
 # define RESET	"\x1B[0m"
 # define CLR	"\e[1;1H\e[?25l"
 
+
+#include <string.h>
+#include <stdarg.h>
+#include <math.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "libft.h"
-#include "error_msg.h"
+#include "msg.h"
 #include "get_next_line.h"
 
+/*
+*	INSTRUCTIONS
+*/
 int				sa(t_check *check);
+int				sb(t_check *check);
+int				ss(t_check *check);
+int				sx(t_check *check, char *line);
+/***/
+int				px(t_check *check, char *line);
+int				pa(t_check *check);
+int				pb(t_check *check);
+/***/
+int				ra(t_check *check);
+int				rb(t_check *check);
+int				rr(t_check *check);
+int				rx(t_check *check, char *line);
+/***/
+int				rrx(t_check *check, char *line);
+int				rra(t_check *check);
+int				rrb(t_check *check);
+int				rrr(t_check *check);
+
+/*
+*
+*/
 
 #endif

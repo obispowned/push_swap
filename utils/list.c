@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:39 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/11 18:43:08 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/14 16:30:01 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,26 @@ t_stack		*lst_del_first(t_stack *stack) /* falta comprobacion */
 	else
 		print_error("Lista vacia");
 	return (stack);
+}
+
+void		lst_del_last(t_stack *stack) /* falta comprobacion */
+{
+	t_stack *aux;
+	t_stack *tmp;
+
+	if (stack != NULL)
+	{
+		aux = stack;
+		tmp = stack;
+		while(aux->next != NULL)
+        {
+            tmp = aux;
+            aux = aux->next;
+        }
+		if(aux == stack)
+            stack = NULL;
+        else
+            tmp->next = NULL;
+        free(aux);
+	}
 }

@@ -1,20 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   is_digit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 19:02:44 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/10 12:29:30 by agutierr         ###   ########.fr       */
+/*   Created: 2021/04/14 11:43:37 by agutierr          #+#    #+#             */
+/*   Updated: 2021/04/14 11:43:46 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "../headers/push_swap.h"
 
-int	print_error(const char *str)
+int			isallnum(char *file)
 {
-	write(1, str, ft_strlen(str));
+	int		i;
+
+	i = 0;
+	while (file[i])
+	{
+		if (file[i] > '9' || file[i] < '0')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int			isallnum_and_spa(char *file)
+{
+	int		i;
+
+	i = 0;
+	while (file[i])
+	{
+		if ((file[i] > '9' || file[i] < '0') && (file[i] != ' '))
+			return (1);
+		i++;
+	}
 	return (0);
 }

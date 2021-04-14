@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_msg.h                                        :+:      :+:    :+:   */
+/*   msg.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 18:32:19 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/10 14:15:14 by agutierr         ###   ########.fr       */
+/*   Created: 2021/04/14 11:46:43 by agutierr          #+#    #+#             */
+/*   Updated: 2021/04/14 11:57:06 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_MSG_H
-# define ERROR_MSG_H
+#ifndef MSG_H
+# define MSG_H
 
 # define ERROR ft_putendl_fd("Error", 5);
 # define KO ft_putendl_fd("KO", 2);
@@ -28,7 +28,8 @@
 # define RRB ft_putendl_fd("rrb", 1);
 # define RRR ft_putendl_fd("rrr", 1);
 
-int         print_error(const char *str);
-
+int			print_error(const char *str);
+void		print_list(t_stack *stack);
+void		print_sinmas(const char *str);
 
 #endif

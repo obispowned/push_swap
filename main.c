@@ -1,56 +1,16 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/14 14:00:54 by agutierr          #+#    #+#             */
+/*   Updated: 2021/04/14 14:00:55 by agutierr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./headers/push_swap.h"
-
-void print_list(t_stack *stack)
-{
-	t_stack *aux;
-	int		i;
-
-	i = 0;
-	aux = stack;
-	while(aux->next != NULL)
-	{
-		printf("Elemento %d: %d\n", 1+i++, aux->content);
-		aux = aux->next;
-	}
-	printf("Elemento %d: %d\n", 1+i++, aux->content);
-	if (aux->next == NULL)
-		printf("Fin de lista\n");
-	else
-		printf("Movidas\n");
-}
-int			isallnum(char *file)
-{
-	int		i;
-
-	i = 0;
-	while (file[i])
-	{
-		if (file[i] > '9' || file[i] < '0')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int			isallnum_and_spa(char *file)
-{
-	int		i;
-
-	i = 0;
-	while (file[i])
-	{
-		if ((file[i] > '9' || file[i] < '0') && (file[i] != ' '))
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 int			one_arg(int argc, char **file, t_check *check)
 {
@@ -91,32 +51,35 @@ int			check_args(int argc, char **argv)
 	return (0);
 }
 
-void		check_stdin(t_check *check)
+int		check_stdin(t_check *check)
 {
 	int		size;
 	char 	*line;
 
 	while ((size = get_next_line(0, &line)) > 0)
-	{ //sin los else me escribe directo
+	{			//sin los else me escribe directo
 		if ((strcmp((const char *)line, "sa") == 0) ||
 		(strcmp((const char *)line, "sb") == 0) ||
 		(strcmp((const char *)line, "ss") == 0))
-			printf("sx ");
+			sx(check, line);
 		else if ((strcmp((const char *)line, "ra") == 0) ||
 		(strcmp((const char *)line, "rb") == 0) ||
 		(strcmp((const char *)line, "rr") == 0))
-			printf("rx ");
+			rx(check, line);
 		else if ((strcmp((const char *)line, "rra") == 0) ||
 		(strcmp((const char *)line, "rrb") == 0) ||
 		(strcmp((const char *)line, "rrr") == 0))
-			printf("rrx ");
+			rrx(check, line);
 		else if ((strcmp((const char *)line, "pa") == 0) ||
 		(strcmp((const char *)line, "pb") == 0))
-			printf("px ");
-		else
+			px(check, line);
+		else if (strcmp((const char *)line, "") == 0)
 			break;
+		else
+			return (print_error("Error\n"));
 		free(line);
 	}
+	return (0);
 }
 
 int         main(int argc, char **argv)
@@ -141,18 +104,8 @@ int         main(int argc, char **argv)
 			return (print_error("Error\n"));
 	}
 	print_list(check->a);
-	check_stdin(check);
-/*	while(1)
-	{
-		ret = scanf((const char*)scanner);
-		if(ret == 0)
-			break;
-		if (strcmp(scanner, "sa") == 0)
-			sa(check);
-		print_list(check->a);
-	}
-	*/
-	//system ("leaks push_swap");
+	if (check_stdin(check) == 1)
+		return(1);
 	return (0);
 }
 
