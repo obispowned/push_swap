@@ -78,6 +78,7 @@ int		check_stdin(t_check *check)
 		else
 			return (print_error("Error\n"));
 		free(line);
+		print_list(check->a);
 	}
 	return (0);
 }

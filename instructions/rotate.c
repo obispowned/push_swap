@@ -15,50 +15,48 @@
 int				rx(t_check *check, char *line)
 {
 	if (strcmp((const char *)line, "ra") == 0)
-		return (ra(check));
+		return (ra(&check->a));
 	else if (strcmp((const char *)line, "rb") == 0)
-		return (rb(check));
+		return (rb(&check->b));
     else if (strcmp((const char *)line, "rr") == 0)
         return (rr(check));
     return (1);
 }
 
-int				ra(t_check *check)
+int				ra(t_stack **a)
 { /* BIEN */
-    int         aux;
+    t_stack     *aux;
 
-    if ((check->a) && (check->a->next != NULL))
+    if ((*a) && ((*a)->next != NULL))
     {
-        aux = check->a->content;
-        check->a = lst_del_first(check->a);
-        ft_lstadd_back(&check->a, ft_lstnew(aux));
+        aux = *a;
+        *a = (*a)->next;
+        ft_lstadd_back(a, aux);
     }
     else
 		return (print_error("Error en: ra\n"));
-    print_list(check->a);
     return (0);
 }
 
-int				rb(t_check *check)
-{   /* SF */
-    int         aux;
+int				rb(t_stack **b)
+{ /* BIEN */
+    t_stack     *aux;
 
-    if ((check->b) && (check->b->next != NULL))
+    if ((*b) && ((*b)->next != NULL))
     {
-       aux = check->b->content;
-       check->b = lst_del_first(check->b);
-       ft_lstadd_back(&check->b, ft_lstnew(aux));
+        aux = *b;
+        *b = (*b)->next;
+        ft_lstadd_back(b, aux);
     }
     else
 		return (print_error("Error en: rb\n"));
-    print_list(check->a);
     return (0);
 }
 
 int				rr(t_check *check)
 {
-    ra(check);
-	rb(check);
+    ra(&check->a);
+	rb(&check->b);
 	write(1, "rr\n", 3);
 	return (0);
 }

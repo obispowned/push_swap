@@ -46,13 +46,13 @@ int				px(t_check *check, char *line);
 int				pa(t_check *check);
 int				pb(t_check *check);
 /***/
-int				ra(t_check *check);
-int				rb(t_check *check);
+int				ra(t_stack **a);
+int				rb(t_stack **b);
 int				rr(t_check *check);
 int				rx(t_check *check, char *line);
 /***/
 int				rrx(t_check *check, char *line);
-int				rra(t_check *check);
+int				rra(t_stack **a);
 int				rrb(t_check *check);
 int				rrr(t_check *check);
 

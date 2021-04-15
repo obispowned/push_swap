@@ -15,22 +15,42 @@
 int				rrx(t_check *check, char *line)
 {
 	if (strcmp((const char *)line, "rra") == 0)
-		return (rra(check));
+		return (rra(&check->a));
 	else if (strcmp((const char *)line, "rrb") == 0)
 		return (rrb(check));
     else if (strcmp((const char *)line, "rrr") == 0)
         return (rrr(check));
-	return (1);
+	else
+		return (1);
 }
 
-int				rra(t_check *check)
+t_stack			*lst_prev_to_this(t_stack *stack)
 {
-	int         aux;
+	t_stack		*aux;
 
-	aux = (ft_lstlast(check->a))->content;
-	lst_del_last(check->a);
-	ft_lstadd_front(&check->a, ft_lstnew(aux));
-	return (0);
+	aux = stack;
+	if (stack)
+	{
+		while (aux->next != stack)
+			aux = aux->next;
+	}
+	return (aux);
+}
+
+int				rra(t_stack **a)
+{
+    t_stack     *aux;
+
+    if ((*a) && ((*a)->next != NULL))
+    {
+        aux = *a;
+		*a = ft_lstlast(*a);
+		(*a)->next = aux;
+		aux = lst_prev_to_this(*a);
+    }
+    else
+		return (print_error("Error en: ra\n"));
+    return (0);
 }
 
 int				rrb(t_check *check)
