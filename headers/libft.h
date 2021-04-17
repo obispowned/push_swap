@@ -15,7 +15,7 @@
 
 typedef struct		s_stack
 {
-	int				content; //dato
+	long			content; //dato
 	struct s_stack	*next; //puntero al siguiente nodo
 }					t_stack;
 
@@ -39,8 +39,7 @@ t_stack		*ft_lstnew(int content);
 void	    ft_lstadd_front(t_stack **alst, t_stack *new);
 void		ft_lstadd_back(t_stack **alst, t_stack *new);
 int			ft_lstlen(t_stack *lst);
-t_stack		*ft_lstlast(t_stack *lst);
-t_stack		*lst_prev_to_this(t_stack *stack);
+t_stack		*ft_lstlast(t_stack **lst);
 t_stack		*lst_del_first(t_stack *stack);
 void		lst_del_last(t_stack *stack);
 

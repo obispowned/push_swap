@@ -15,12 +15,12 @@
 int			one_arg(int argc, char **file, t_check *check)
 {
 	int		i;
-
+//cambiar atol por atol
 	i = 1;
-	check->a = ft_lstnew(atoi(file[0])); /*file[0] xq ya spliteamos el argv*/
+	check->a = ft_lstnew(atol(file[0])); /*file[0] xq ya spliteamos el argv*/
 	while (file[i])
 	{
-		ft_lstadd_back(&check->a, ft_lstnew(atoi(file[i])));
+		ft_lstadd_back(&check->a, ft_lstnew(atol(file[i])));
 		i++;
 	}
 	return (0);
@@ -33,12 +33,12 @@ int			args(int argc, char **argv, t_check *check)
 	i = 2;
 	if (isallnum(argv[1]) == 1)
 		return(1);
-	check->a = ft_lstnew(atoi(argv[1]));
+	check->a = ft_lstnew(atol(argv[1]));
 	while (i < argc)
 	{
 		if (isallnum(argv[i]) == 1)
 			return(1);
-		ft_lstadd_back(&check->a, ft_lstnew(atoi(argv[i])));
+		ft_lstadd_back(&check->a, ft_lstnew(atol(argv[i])));
 		i++;
 	}
 	return (0);
@@ -83,6 +83,8 @@ int		check_stdin(t_check *check)
 	return (0);
 }
 
+/*comprobar que no salga del rango de int con long y atol*/
+/*comprobar que no haya numeros duplicados*/
 int         main(int argc, char **argv)
 {
     t_check *check;

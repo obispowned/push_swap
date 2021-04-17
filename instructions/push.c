@@ -12,45 +12,49 @@
 
 #include "../headers/push_swap.h"
 
+//  TODO BIEN, REVISAR RETURNS
+
 int				px(t_check *check, char *line)
 {
 	if (strcmp((const char *)line, "pa") == 0)
-		return (pa(check));
+		return (pa(&check->a, &check->b));
 	else if (strcmp((const char *)line, "pb") == 0)
-		return (pb(check));
+		return (pb(&check->a, &check->b));
 	return (1);
 }
 
-int				pa(t_check *check)
+int				pa(t_stack **a, t_stack **b)
 {
-	int	aux;
+	t_stack *aux, *aux2;
 
-	if (check->b)
+	if (*b)
 	{
-		aux = check->b->content;
-		lst_del_first(check->b);
-		ft_lstadd_front(&check->a, ft_lstnew(aux));
+		aux2 = (*b)->next;
+		aux = (*b);
+		ft_lstadd_front(a, aux);
+		*b = aux2;
 		write(1, "pa\n", 3);
 	}
 	else
-		return (print_error("Error en: pa\n"));
-	print_list(check->a);
+		return (print_error("Error: No existe el stack b\n"));
+	print_list(*a);
 	return (0);
 }
 
-int				pb(t_check *check)
+int				pb(t_stack **a, t_stack **b)
 {
-	int	aux;
+	t_stack *aux, *aux2;
 
-	if (check->a)
+	if (*a)
 	{
-		aux = check->a->content;
-		lst_del_first(check->a);
-		ft_lstadd_front(&check->b, ft_lstnew(aux));
+		aux2 = (*a)->next;
+		aux = (*a);
+		ft_lstadd_front(b, aux);
+		*a = aux2;
 		write(1, "pb\n", 3);
 	}
 	else
-		return (print_error("Error en: pa\n"));
-	print_list(check->a);
+		return (print_error("Error: No existe el stack a\n"));
+	print_list(*a);
 	return (0);
 }

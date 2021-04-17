@@ -21,10 +21,10 @@ void print_list(t_stack *stack)
 	aux = stack;
 	while(aux->next != NULL)
 	{
-		printf("Elemento %d: %d\n", 1+i++, aux->content);
+		printf("Elemento %d: %d\n", 1+i++, (int)aux->content);
 		aux = aux->next;
 	}
-	printf("Elemento %d: %d\n", 1+i++, aux->content);
+	printf("Elemento %d: %d\n", 1+i++, (int)aux->content);
 	if (aux->next == NULL)
 		printf("Fin de lista\n");
 	else

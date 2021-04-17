@@ -36,7 +36,7 @@ void		ft_lstadd_back(t_stack **alst, t_stack *new)
 {
 	t_stack		*p;
 
-	p = ft_lstlast(*alst);
+	p = ft_lstlast(alst);
 	if (new)
 	{
 		if (*alst != NULL)
@@ -68,11 +68,11 @@ int			ft_lstlen(t_stack *lst)
 	return (c);
 }
 
-t_stack		*ft_lstlast(t_stack *lst)
+t_stack		*ft_lstlast(t_stack **lst)
 {
 	t_stack	*p;
 
-	p = lst;
+	p = (*lst);
 	if (p)
 	{
 		while (p->next != NULL)
