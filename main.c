@@ -14,10 +14,17 @@
 
 int			one_arg(int argc, char **file, t_check *check)
 {
-	int		i;
-//cambiar atol por atol
+	int	  	  i;
+	long long j;
+
+	j = atol(file[0]);
 	i = 1;
-	check->a = ft_lstnew(atol(file[0])); /*file[0] xq ya spliteamos el argv*/
+	if (j > 2147483647 || j < -2147483648)
+	{
+		printf("Tamano demasiado grande");
+		return (1);
+	}
+	check->a = ft_lstnew(j); /*file[0] xq ya spliteamos el argv*/
 	while (file[i])
 	{
 		ft_lstadd_back(&check->a, ft_lstnew(atol(file[i])));
@@ -29,16 +36,29 @@ int			one_arg(int argc, char **file, t_check *check)
 int			args(int argc, char **argv, t_check *check)
 {
 	int		i;
+	long long j;
 
 	i = 2;
-	if (isallnum(argv[1]) == 1)
+	if (isallnum_and_minus(argv[1]) == 1)
 		return(1);
-	check->a = ft_lstnew(atol(argv[1]));
+	j = atol(argv[1]);
+	if (j > 2147483647 || j < -2147483648)
+	{
+		printf("Tamano demasiado grande");
+		return (1);
+	}
+	check->a = ft_lstnew(j);
 	while (i < argc)
 	{
-		if (isallnum(argv[i]) == 1)
+		if (isallnum_and_minus(argv[i]) == 1)
 			return(1);
-		ft_lstadd_back(&check->a, ft_lstnew(atol(argv[i])));
+		j = atol(argv[i]);
+		if (j > 2147483647 || j < -2147483648)
+		{
+			printf("Tamano demasiado grande");
+			return (1);
+		}
+		ft_lstadd_back(&check->a, ft_lstnew(j));
 		i++;
 	}
 	return (0);
@@ -46,7 +66,7 @@ int			args(int argc, char **argv, t_check *check)
 
 int			check_args(int argc, char **argv)
 {
-	if ((argc == 2 && (isallnum_and_spa(argv[1]) == 1)) || (argc <= 1))
+	if ((argc == 2 && (isallnum_and_spa_and_minus(argv[1]) == 1)) || (argc <= 1))
 		return (1);
 	return (0);
 }

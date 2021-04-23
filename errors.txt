@@ -1,0 +1,12 @@
+Sacar error con numeros duplicados
+Numero mayor o menor que el rango de INT (parece que esta, falta comprobar)
+Aceptar numeros negativos (parece que esta, falta comprobacion con varios signos menos etc etc)
+
+
+
+
+
+
+/*********************Ejecutar ejemplo***************************/
+ARG=$(ruby -e "puts (0..100).to_a.shuffle.join(' ')");
+./push_swap $ARG | ./checker $ARG

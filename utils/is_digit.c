@@ -13,7 +13,7 @@
 #include "../headers/push_swap.h"
 
 int			isallnum(char *file)
-{
+{ //solo digitos ret 0, error ret 1
 	int		i;
 
 	i = 0;
@@ -27,7 +27,7 @@ int			isallnum(char *file)
 }
 
 int			isallnum_and_spa(char *file)
-{
+{ // solo digitos ret 0, error ret 1
 	int		i;
 
 	i = 0;
@@ -38,4 +38,46 @@ int			isallnum_and_spa(char *file)
 		i++;
 	}
 	return (0);
+}
+
+int			isallnum_and_minus(char *file)
+{ // solo digitos ret 0, error ret 1
+	int		i;
+
+	i = 0;
+	while (file[i])
+	{
+		if ((file[i] > '9' || file[i] < '0') && (file[i] != '-'))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int			isallnum_and_spa_and_minus(char *file)
+{ // solo digitos ret 0, error ret 1
+	int		i;
+
+	i = 0;
+	while (file[i])
+	{
+		if ((file[i] > '9' || file[i] < '0') && (file[i] != ' ') && (file[i] != '-'))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int			is_spa(char *file)
+{ // si hay algun espacio en la cadena ret 0, si no hay espacios: ret 1
+	int		i;
+
+	i = 0;
+	while (file[i])
+	{
+		if (file[i] == ' ')
+			return (0);
+		i++;
+	}
+	return (1);
 }

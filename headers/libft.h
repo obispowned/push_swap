@@ -31,6 +31,9 @@ char		**ft_split(char const *s, char c);
 int			ft_atoi(const char *str);
 int			isallnum(char *file);
 int			isallnum_and_spa(char *file);
+int			is_spa(char *file);
+int			isallnum_and_spa_and_minus(char *file);
+int			isallnum_and_minus(char *file);
 
 /*
 * list.c
