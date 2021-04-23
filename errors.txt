@@ -1,8 +1,7 @@
 Sacar error con numeros duplicados
 Numero mayor o menor que el rango de INT (parece que esta, falta comprobar)
 Aceptar numeros negativos (parece que esta, falta comprobacion con varios signos menos etc etc)
-
-
+Comprobar e informarme de como sacar con un solo makefile, dos ejecutables, checker y push_swap, que funcienen entre ellos
 
 
 
