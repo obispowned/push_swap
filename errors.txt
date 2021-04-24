@@ -1,8 +1,4 @@
-Sacar error con numeros duplicados
-Numero mayor o menor que el rango de INT (parece que esta, falta comprobar)
-Aceptar numeros negativos (parece que esta, falta comprobacion con varios signos menos etc etc)
-Comprobar e informarme de como sacar con un solo makefile, dos ejecutables, checker y push_swap, que funcienen entre ellos
-
+comprobar INT_MIN y INT_MAX
 
 /*********************Ejecutar ejemplo***************************/
 ARG=$(ruby -e "puts (0..100).to_a.shuffle.join(' ')");

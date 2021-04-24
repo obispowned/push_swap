@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 11:46:43 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/14 11:57:06 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 16:59:48 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define RRR ft_putendl_fd("rrr", 1);
 
 int			print_error(const char *str);
-void		print_list(t_stack *stack);
+void		print_list(t_stack *stack, char pile);
 void		print_sinmas(const char *str);
 
 #endif

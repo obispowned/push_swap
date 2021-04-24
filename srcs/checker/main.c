@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:00:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 16:54:29 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 17:05:10 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ int		check_stdin(t_check *check)
 		else
 			return (print_error("Error\n"));
 		free(line);
-		print_list(check->a);
+		print_list(check->a, 'A');
+		print_list(check->a, 'B');
 	}
 	return (0);
 }
@@ -134,7 +135,8 @@ int         main(int argc, char **argv)
 		if (args(argc, argv, check) == 1)
 			return (print_error("Error\n"));
 	}
-	print_list(check->a);
+	print_list(check->a, 'A');
+	print_list(check->b, 'B');
 	if (check_stdin(check) == 1)
 		return(1);
 	return (0);

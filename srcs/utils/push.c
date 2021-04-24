@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:13:08 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 15:07:34 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 17:03:08 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int				pa(t_stack **a, t_stack **b)
 	}
 	else
 		return (print_error("Error: No existe el stack b\n"));
-	print_list(*a);
 	return (0);
 }
 
@@ -55,6 +54,5 @@ int				pb(t_stack **a, t_stack **b)
 	}
 	else
 		return (print_error("Error: No existe el stack a\n"));
-	print_list(*a);
 	return (0);
 }

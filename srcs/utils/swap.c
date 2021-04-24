@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:06:29 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 15:07:47 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 17:02:27 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int				sa(t_check *check)
 	}
 	else
 		return (print_error("Error en: sa\n"));
-	print_list(check->a);
 	return(0);
 }
 
@@ -54,7 +53,6 @@ int				sb(t_check *check)
 	}
 	else
 		return (print_error("Error en: sb\n"));
-	print_list(check->a);
 	return(0);
 }
 
