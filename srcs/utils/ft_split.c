@@ -6,11 +6,11 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:20:25 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/10 13:20:58 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 15:07:02 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 static size_t			count_segment(char const *s, char c)
 {

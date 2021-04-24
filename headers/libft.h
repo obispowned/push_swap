@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:15:52 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/14 17:01:28 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 16:23:14 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,24 @@ typedef struct		s_check
 	t_stack			*b;
 }					t_check;
 
+/*
+*	Libft
+*/
 
+int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strlen(const char *str);
 char		**ft_split(char const *s, char c);
 int			ft_atoi(const char *str);
 int			isallnum(char *file);
+
+long long	ft_atol(const char *str);
 int			isallnum_and_spa(char *file);
 int			is_spa(char *file);
 int			isallnum_and_spa_and_minus(char *file);
 int			isallnum_and_minus(char *file);
+int			no_repeated_numbers(char **arr);
+int			str_array_length(char **arr);
+void		free_array(char **arr);
 
 /*
 * list.c
@@ -46,13 +55,5 @@ t_stack		*ft_lstlast(t_stack **lst);
 t_stack		*lst_del_first(t_stack *stack);
 void		lst_del_last(t_stack *stack);
 
-/*
-* list2.c
-*/
-/*void		ft_lstdelone(t_stack *lst, void (*del)(void*));
-void		ft_lstclear(t_stack **lst, void (*del)(void*));
-void		ft_lstiter(t_stack *lst, void (*f)(void *));
-t_stack		*ft_lstmap(t_stack *lst, void *(*f)(void *),
-		void (*del)(void *));*/
 
 #endif

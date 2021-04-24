@@ -6,11 +6,11 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 11:43:37 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/14 11:43:46 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 15:07:26 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 int			isallnum(char *file)
 { //solo digitos ret 0, error ret 1

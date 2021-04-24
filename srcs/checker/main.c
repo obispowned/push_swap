@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:00:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/14 14:00:55 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 16:54:29 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int			args(int argc, char **argv, t_check *check)
 {
 	int		i;
 	long long j;
+	char	**check_nums;
 
+	check_nums = malloc(sizeof(char*) * argc);
+	check_nums[0] = ft_strdup(argv[1]);
 	i = 2;
 	if (isallnum_and_minus(argv[1]) == 1)
 		return(1);
@@ -50,6 +53,7 @@ int			args(int argc, char **argv, t_check *check)
 	check->a = ft_lstnew(j);
 	while (i < argc)
 	{
+		check_nums[i-1] = ft_strdup(argv[i]);
 		if (isallnum_and_minus(argv[i]) == 1)
 			return(1);
 		j = atol(argv[i]);
@@ -61,6 +65,8 @@ int			args(int argc, char **argv, t_check *check)
 		ft_lstadd_back(&check->a, ft_lstnew(j));
 		i++;
 	}
+	if(!(no_repeated_numbers(check_nums)))
+		return(print_error("Error, numeros repetidos"));
 	return (0);
 }
 
@@ -119,6 +125,8 @@ int         main(int argc, char **argv)
 	if (argc == 2) //si solo hay un argumento "23 24 56", hago el split y lo meto en nodos
 	{
 		file = ft_split(argv[1], ' ');
+		if(!(no_repeated_numbers(file)))
+			return(print_error("Error, numeros repetidos"));
 		one_arg(argc, file, check);
 	}
 	else		//si me llo pasan en vario argumentos 23 24 56, vamos anadiendo nodos por cada arg

@@ -1,15 +1,25 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/04/24 16:02:20 by agutierr          #+#    #+#              #
+#    Updated: 2021/04/24 16:20:49 by agutierr         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CHECKER			=	checker
 PUSH_SWAP		=	push_swap
 
-SRCS_CHECKER	=	/srcs/checker/*.c
-SRCS_PUSH_SWAP	=	/srcs/push_swap/*.c
-SRCS_UTILS		=	/srcs/utils/*.c
+SRCS_CHECKER	=	./srcs/checker/*.c
+SRCS_PUSH_SWAP	=	./srcs/push_swap/*.c
+SRCS_UTILS		=	./srcs/utils/*.c
 
-SRCS			=	utils/*.c\
-					instructions/*.c\
-					main.c
+SANITIZE		=	-fsanitize=address
 
-#############################
+#########################################################
 
 FLAGS			= -Wall -Wall -Werror
 
@@ -23,23 +33,19 @@ GRIS			= \033[1;30m
 CYAN			= \033[0;36m
 RESET			= \033[0m
 
-all:		$(NAME)
+$(CHECKER):
+	$(GCC) $(FLAGS) $(SRCS_CHECKER) $(SRCS_UTILS) -o $(CHECKER)
 
-$(NAME):
-			@echo "${RED}[...Haciendo CLEAN del a.out...]${RESET}"
-			@rm -rf a.out
-			@echo "${CYAN}[...Iniciando compilacion...]${GRIS}"
-			$(GCC) -g3 $(SRCS) $(FLAGS) -o $(NAME)
-			@echo "${RED}[.oOo.oOo.oOo.oOo.]${RESET}"
-			@echo "${YELLOW}[ C O M P I L A O ]${RESET}"
-			@echo "${PURPLE}[.oOo.oOo.oOo.oOo.]${RESET}"
+$(PUSH_SWAP):
+	$(GCC) $(FLAGS) $(SRCS_PUSH_SWAP) $(SRCS_UTILS) -o $(PUSH_SWAP)
+
+all:	$(CHECKER) $(PUSH_SWAP)
 
 fclean:	clean
-	rm -f $(NAME)
 
 clean :
-	@echo "\033[0;31m[BORRANDO BASURA...]"
-	$(RM) $(OBJS)
+	rm -f $(CHECKER) $(PUSH_SWAP)
+	@echo "\033[0;31m[BORRANDO EJECUTABLE...]"
 
 re:		fclean all
 

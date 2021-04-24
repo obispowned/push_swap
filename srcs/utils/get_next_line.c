@@ -6,11 +6,11 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:26:00 by agutierr          #+#    #+#             */
-/*   Updated: 2020/01/24 11:27:38 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 15:07:23 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 void				destroy(char **str)
 {

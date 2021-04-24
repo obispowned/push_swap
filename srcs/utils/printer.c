@@ -6,11 +6,11 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 11:44:45 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/14 11:56:16 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 15:07:31 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 void print_list(t_stack *stack)
 {

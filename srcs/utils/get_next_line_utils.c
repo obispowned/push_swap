@@ -6,11 +6,11 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:26:41 by agutierr          #+#    #+#             */
-/*   Updated: 2020/01/24 11:53:18 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 15:07:21 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 // size_t				ft_strlen(char *s)
 // {

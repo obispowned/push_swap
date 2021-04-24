@@ -6,11 +6,11 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:29:27 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/10 13:29:31 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 16:19:36 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../../headers/push_swap.h"
 
 int							ft_atoi(const char *str)
 {
@@ -38,7 +38,33 @@ int							ft_atoi(const char *str)
 	return (sign * num);
 }
 
+long long	ft_atol(const char *str)
+{
+	long i;
+	long neg;
+	long num;
 
+	i = 0;
+	neg = 1;
+	num = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			neg = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + str[i] - '0';
+		i++;
+	}
+	return (num * neg);
+}
+
+
+/*
 long long						ft_atol(const char *str)
 {
 	unsigned long long		num;
@@ -64,3 +90,4 @@ long long						ft_atol(const char *str)
 	}
 	return (sign * num);
 }
+*/

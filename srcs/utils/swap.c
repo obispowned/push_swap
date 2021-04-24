@@ -6,11 +6,11 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:06:29 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/14 12:32:11 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/24 15:07:47 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 int				sx(t_check *check, char *line)
 {
