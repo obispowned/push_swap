@@ -1,4 +1,9 @@
-NAME			= 	push_swap
+CHECKER			=	checker
+PUSH_SWAP		=	push_swap
+
+SRCS_CHECKER	=	/srcs/checker/*.c
+SRCS_PUSH_SWAP	=	/srcs/push_swap/*.c
+SRCS_UTILS		=	/srcs/utils/*.c
 
 SRCS			=	utils/*.c\
 					instructions/*.c\

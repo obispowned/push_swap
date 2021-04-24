@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 int			one_arg(int argc, char **file, t_check *check)
 {
