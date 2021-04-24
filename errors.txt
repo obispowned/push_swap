@@ -4,8 +4,6 @@ Aceptar numeros negativos (parece que esta, falta comprobacion con varios signos
 Comprobar e informarme de como sacar con un solo makefile, dos ejecutables, checker y push_swap, que funcienen entre ellos
 
 
-
-
 /*********************Ejecutar ejemplo***************************/
 ARG=$(ruby -e "puts (0..100).to_a.shuffle.join(' ')");
 ./push_swap $ARG | ./checker $ARG
