@@ -14,8 +14,13 @@
 
 int         main(int	argc, char	**argv)
 {
-	printf("%s\n", argv[0]);
-	if (argc > 0)
-		return (0);
+	t_check		*check;
+
+	check = NULL;
+	/*RELLENAR STACKS*/
+	/*FILTRAR POR CANTIDAD NODOS PARA REDIRIGIR AL ALGORITMO*/
+	
+	if (argc < 2)
+		return (1);
 	return (0);
 }

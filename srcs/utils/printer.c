@@ -12,10 +12,11 @@
 
 #include "../../headers/push_swap.h"
 
-void	print_list(t_stack *stack, char pile)
+/* cambiar y printear los dos stack
+void	print_list(t_check *check)
 {
-	printf("/************* %c *************/\n", pile);
-	if (stack->next != NULL)
+	printf("/************* %c *************\n", pile);
+	if (stack)
 	{
 		t_stack *aux;
 		int		i;
@@ -45,3 +46,4 @@ void	print_sinmas(const char *str)
 {
 	write(1, str, ft_strlen(str));
 }
+*/
