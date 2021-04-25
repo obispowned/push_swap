@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 15:07:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 16:23:25 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/25 19:17:53 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,15 @@ int		no_repeated_numbers(char **arr)
 		j = i;
 		while (++j < str_array_length(arr))
 		{
-			if (!ft_strcmp(arr[i], arr[j]))
-				return (0);
+			if (!ft_strcmp(arr[i], arr[j]) || ft_atol(arr[i]) == ft_atol(arr[j]))
+					return (0);
 		}
 		i++;
 	}
 	return (1);
 }
+
+/*
+			if ((atol(arr[i]) == atol(arr[j]))
+				return (0);
+*/

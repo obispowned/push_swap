@@ -1,4 +1,7 @@
-comprobar INT_MIN y INT_MAX
+
+
+
+
 
 /*********************Ejecutar ejemplo***************************/
 ARG=$(ruby -e "puts (0..100).to_a.shuffle.join(' ')");

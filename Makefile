@@ -6,7 +6,7 @@
 #    By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/24 16:02:20 by agutierr          #+#    #+#              #
-#    Updated: 2021/04/24 16:20:49 by agutierr         ###   ########.fr        #
+#    Updated: 2021/04/25 17:48:37 by agutierr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SANITIZE		=	-fsanitize=address
 
 FLAGS			= -Wall -Wall -Werror
 
-GCC 			= gcc
+GCC 			= gcc -g3
 
 RED 			= \033[0;31m
 PURPLE			= \033[0;35m

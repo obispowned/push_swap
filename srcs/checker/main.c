@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:00:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 17:05:10 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/25 19:21:00 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ int			one_arg(int argc, char **file, t_check *check)
 		i++;
 	}
 	return (0);
+}
+
+void		double_print(char **str)
+{
+	int i;
+
+	i = 1;
+	while (str[i])
+	{
+		printf("%s\n",str[i]);
+		i++;
+	}
 }
 
 int			args(int argc, char **argv, t_check *check)
@@ -65,15 +77,31 @@ int			args(int argc, char **argv, t_check *check)
 		ft_lstadd_back(&check->a, ft_lstnew(j));
 		i++;
 	}
-	if(!(no_repeated_numbers(check_nums)))
-		return(print_error("Error, numeros repetidos"));
 	return (0);
 }
 
 int			check_args(int argc, char **argv)
 {
+	int		i;
+	int		j;
+
+	i = 1;
+	j = 0;
 	if ((argc == 2 && (isallnum_and_spa_and_minus(argv[1]) == 1)) || (argc <= 1))
 		return (1);
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j] != '\0')
+		{
+			if (argv[i][j] == '-' && ((!argv[i][j+1]) || (argv[i][j+1] < '0' || argv[i][j+1] > '9')))
+			{
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }
 
@@ -102,13 +130,14 @@ int		check_stdin(t_check *check)
 		else if (strcmp((const char *)line, "") == 0)
 			break;
 		else
-			return (print_error("Error\n"));
+			return (print_error("Error4\n"));
 		free(line);
 		print_list(check->a, 'A');
-		print_list(check->a, 'B');
+		print_list(check->b, 'B');
 	}
 	return (0);
 }
+
 
 /*comprobar que no salga del rango de int con long y atol*/
 /*comprobar que no haya numeros duplicados*/
@@ -121,19 +150,22 @@ int         main(int argc, char **argv)
 	scanner[2] = '\0';
 	file = NULL;
     check = (t_check *)malloc(sizeof(t_check));
+	check->b = NULL;
 	if (check_args(argc, argv) == 1)
-		return (print_error("Error\n"));
+		return (print_error("Error1\n"));
 	if (argc == 2) //si solo hay un argumento "23 24 56", hago el split y lo meto en nodos
 	{
 		file = ft_split(argv[1], ' ');
 		if(!(no_repeated_numbers(file)))
-			return(print_error("Error, numeros repetidos"));
+			return(print_error("Error2\n"));
 		one_arg(argc, file, check);
 	}
 	else		//si me llo pasan en vario argumentos 23 24 56, vamos anadiendo nodos por cada arg
 	{
+		if(!(no_repeated_numbers(&argv[1])))
+			return(print_error("Error7\n"));
 		if (args(argc, argv, check) == 1)
-			return (print_error("Error\n"));
+			return (print_error("Error3\n"));
 	}
 	print_list(check->a, 'A');
 	print_list(check->b, 'B');
