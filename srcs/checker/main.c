@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:00:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/25 19:21:00 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/25 20:23:38 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,32 @@ int			check_args(int argc, char **argv)
 	return (0);
 }
 
+char	*check_OK_KO(t_stack **stack)
+{	/*COMPRUEBA AL FINAL DE CHECKER SI TODOS LOS NUMEROS ESTAN COLOCADOS*/
+	t_stack	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = *stack;
+	if (tmp)
+	{
+		i = tmp->content;
+		tmp = tmp->next;
+		while (tmp->next != NULL)
+		{
+			if (i > tmp->content)
+				return ("KO");
+			i = tmp->content;
+			tmp = tmp->next;
+		}
+		if (i > tmp->content)
+			return ("KO");
+	}
+	else
+		return ("KO");
+	return ("OK");
+}
+
 int		check_stdin(t_check *check)
 {
 	int		size;
@@ -135,6 +161,8 @@ int		check_stdin(t_check *check)
 		print_list(check->a, 'A');
 		print_list(check->b, 'B');
 	}
+	write(1, check_OK_KO(&(check->a)), 2);
+	write(1, "\n", 1);
 	return (0);
 }
 
