@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 11:44:45 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/25 17:46:58 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/25 20:55:07 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	print_list(t_stack *stack, char pile)
 			}
 			printf("Elemento %d: %d\n", 1+i++, (int)aux->content);
 			if (aux->next == NULL)
-				printf("Fin de lista\n");
+				printf("Fin de lista de lista\n");
 			else
 				printf("Movidas\n");
 		}

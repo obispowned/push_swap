@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:37 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/25 18:59:48 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/25 20:33:49 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ int				rrr(t_check *check);
 /*
 *
 */
-void		double_print(char **str);
+void			double_print(char **str);
+int				one_arg(int argc, char **file, t_check *check);
+int				args(int argc, char **argv, t_check *check);
+int				check_args(int argc, char **argv);
+char			*check_OK_KO(t_stack **stack);
+int				check_stdin(t_check *check);
 
 
 #endif
