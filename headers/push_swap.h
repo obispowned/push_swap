@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:37 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/25 20:33:49 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/26 18:13:09 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,25 @@ int				ss(t_check *check);
 int				sx(t_check *check, char *line);
 /***/
 int				px(t_check *check, char *line);
-int				pa(t_stack **a, t_stack **b);
-int				pb(t_stack **a, t_stack **b);
+int				pa(t_check *check);
+int				pb(t_check *check);
 /***/
-int				ra(t_stack **a);
-int				rb(t_stack **b);
+int				ra(t_check *check);
+int				rb(t_check *check);
 int				rr(t_check *check);
 int				rx(t_check *check, char *line);
 /***/
 int				rrx(t_check *check, char *line);
-int				rra(t_stack **a);
-int				rrb(t_stack **b);
+int				rra(t_check *check);
+int				rrb(t_check *check);
 int				rrr(t_check *check);
+
+/*
+*	ALGORYTMS
+*/
+void	order_3(t_check *check);
+void	order_2(t_check *check);
+void	ia_order(t_check	*check);
 
 /*
 *

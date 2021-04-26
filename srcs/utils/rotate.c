@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:13:03 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 15:07:44 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/26 17:52:38 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,40 @@
 int				rx(t_check *check, char *line)
 {
 	if (strcmp((const char *)line, "ra") == 0)
-		return (ra(&check->a));
+		return (ra(check));
 	else if (strcmp((const char *)line, "rb") == 0)
-		return (rb(&check->b));
+		return (rb(check));
     else if (strcmp((const char *)line, "rr") == 0)
         return (rr(check));
     return (1);
 }
 
-int				ra(t_stack **a)
+int				ra(t_check *check)
 { /* BIEN */
     t_stack     *aux;
 
-    if ((*a) && ((*a)->next != NULL))
+    if ((check->a) && ((check->a)->next != NULL))
     {
-        aux = *a;
-        *a = (*a)->next;
-        ft_lstadd_back(a, aux);
+        aux = check->a;
+        check->a = check->a->next;
+        ft_lstadd_back(&(check->a), aux);
+        write(1, "ra\n", 3);
     }
     else
 		return (print_error("Error en: ra\n"));
     return (0);
 }
 
-int				rb(t_stack **b)
+int				rb(t_check *check)
 { /* BIEN */
     t_stack     *aux;
 
-    if ((*b) && ((*b)->next != NULL))
+    if ((check->b) && ((check->b)->next != NULL))
     {
-        aux = *b;
-        *b = (*b)->next;
-        ft_lstadd_back(b, aux);
+        aux = check->b;
+        check->b = (check->b)->next;
+        ft_lstadd_back(&(check->b), aux);
+        write(1, "rb\n", 3);
     }
     else
 		return (print_error("Error en: rb\n"));
@@ -55,8 +57,8 @@ int				rb(t_stack **b)
 
 int				rr(t_check *check)
 {
-    ra(&check->a);
-	rb(&check->b);
+    ra(check);
+	rb(check);
 	write(1, "rr\n", 3);
 	return (0);
 }

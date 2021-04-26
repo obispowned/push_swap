@@ -6,23 +6,11 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 20:24:46 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/25 20:54:16 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/26 18:08:13 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
-
-void	order_2(t_check *check)
-{
-	if (check->a->content > (check->a->next)->content)
-		sa(check);
-}
-
-void	ia_order(t_check	*check)
-{
-	if (ft_lstlen(check->a) == 2)
-		order_2(check);
-}
 
 int		main(int	argc, char	**argv)
 {
