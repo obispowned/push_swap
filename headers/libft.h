@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:15:52 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 16:23:14 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:58:48 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,25 @@ typedef struct		s_check
 {
 	t_stack			*a;
 	t_stack			*b;
+
+	int				print_stacks;
+	int				do_write;
+	int				stack_len;
+	long			quarter;
+	long			median;
+	long			three_quarters;
+
+	long			biggest;
+	int				big_rotate;
+	int				big_rrotate;
+	int				big_flag;
+
+	long			smallest;
+	int				small_rotate;
+	int				small_rrotate;
+	int				small_flag;
+
+	int				after_rotate;
 }					t_check;
 
 /*

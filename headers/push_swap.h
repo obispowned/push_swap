@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:37 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/26 19:42:30 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/27 20:03:54 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int				rrr(t_check *check);
 /*
 *	ALGORYTMS
 */
+void			order_100(t_check *check);
 void			order_5(t_check *check);
 void			order_4(t_check *check);
 void			order_3(t_check *check);
@@ -77,5 +78,20 @@ int				check_args(int argc, char **argv);
 char			*check_OK_KO(t_stack **stack);
 int				check_stdin(t_check *check);
 
+void			sort_array(long *array, int len);
+void			find_mid(t_check *check, t_stack *stack, char stack_name);
+void			mid(t_check *check, char stack_name);
+void			push_mid(t_check *check, int split);
+
+void			find_biggest(t_check *check, char stack_name);
+void			find_biggest_smallest(t_check *check, char stack_name);
+void			find_smallest(t_check *check, char stack_name);
+
+void			moves_to_start(t_check *check, char stack_name, int flag);
+void			moves_to_end(t_check *check, char stack_name, int flag);
+void			moves_smallest(t_check *check, char stack_name);
+void			moves_biggest(t_check *check, char stack_name);
+void			find_moves(t_check *check, char stack_name);
+void			push_big_small(t_check *check, t_stack *stack, t_stack *stack_end);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 11:44:45 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/25 20:55:07 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/27 19:22:21 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,8 @@ void	print_sinmas(const char *str)
 	write(1, str, ft_strlen(str));
 }
 
+void			print_exit(char *str)
+{
+	write(1, str, ft_strlen(str));
+	exit(-1);
+}

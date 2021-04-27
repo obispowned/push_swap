@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 18:07:47 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/26 19:56:54 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:09:11 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,32 +55,6 @@ void		order_5(t_check *check)
 	pa(check);
 }
 
-/*
-static void		solve_5(t_frame *frame)
-{
-	t_stack *stack_a_end;
-	t_stack	*tmp;
-	int		flag;
-
-	flag = 0;
-	stack_a_end = frame->a->prev;
-	median(frame, 'a');
-	while (flag != 1)
-	{
-		frame->a == stack_a_end ? flag = 1 : 0;
-		if (frame->a->num < MEDIAN)
-			do_pb(frame);
-		else
-			do_ra(frame);
-	}
-	solve_3(frame);
-	tmp = frame->b->next;
-	frame->b->num < tmp->num ? do_sb(frame) : 0;
-	do_pa(frame);
-	do_pa(frame);
-}*/
-
-
 void	order_3(t_check *check)
 {
 	if (check->a->content > (check->a->next)->content && check->a->content < ((check->a->next)->next)->content) //case 2 1 3
@@ -125,4 +99,6 @@ void	ia_order(t_check	*check)
 		order_4(check);
 	if (ft_lstlen(check->a) == 5)
 		order_5(check);
+	if ((ft_lstlen(check->a) > 5) && (ft_lstlen(check->a) < 101))
+		order_100(check);
 }
