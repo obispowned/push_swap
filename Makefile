@@ -21,7 +21,7 @@ SANITIZE		=	-fsanitize=address
 
 #########################################################
 
-FLAGS			= -Wall -Wall -Werror
+FLAGS			= 
 
 GCC 			= gcc -g3
 

@@ -14,15 +14,15 @@
 
 void		order_4(t_check *check)
 {
-	long	*a;
+	long	*arr;
 	t_stack	*stack;
 
 	stack = check->a;
-	a = fill_me_array(check);
-	while (stack && stack->content != a[0])
+	arr = fill_me_array(check);
+	while ((stack) && (stack->content != arr[0]))
 	{
 		ra(check);
-		stack = stack->next;
+		stack = check->a;
 	}
 	pb(check);
 	order_3(check);
@@ -38,7 +38,6 @@ void		order_5(t_check *check)
 	flag = 0;
 	stack = check->a;
 	a = fill_me_array(check);
-	printf("%ld-%ld-%ld-%ld-%ld\n", a[0],a[1],a[2],a[3],a[4]);
 	while (flag != 2)
 	{
 		if (stack->content == a[0] || stack->content == a[1])
@@ -49,35 +48,49 @@ void		order_5(t_check *check)
 		rra(check);
 		stack = check->a;
 	}
-	if (check->a->content < (check->a->next)->content)
+	order_3(check);
+	if (check->b->content < (check->b->next)->content)
 		sb(check);
 	pa(check);
 	pa(check);
 }
 
-void	order_3(t_check *check)
+int		order_3(t_check *check)
 {
+	int	cantidad_ops;
+
+	cantidad_ops = 0;
 	if (check->a->content > (check->a->next)->content && check->a->content < ((check->a->next)->next)->content) //case 2 1 3
+	{
+		cantidad_ops = 1;
 		sa(check);
+	}
 	else if (check->a->content > (check->a->next)->content && (check->a->next)->content > ((check->a->next)->next)->content) //case 3 2 1
 	{
 		sa(check);
 		rra(check);
+		cantidad_ops = 2;
 	}
 	else if (check->a->content > (check->a->next)->content && (check->a->next)->content < ((check->a->next)->next)->content) //case 3 1 2
+	{
 		ra(check);
+		cantidad_ops = 1;
+	}
 	else if (check->a->content < (check->a->next)->content && (check->a->next)->content > ((check->a->next)->next)->content
 	&& check->a->content < ((check->a->next)->next)->content) //case 1 3 2
 	{
 		sa(check);
 		ra(check);
+		cantidad_ops = 2;
 	}
 	else if (check->a->content < (check->a->next)->content && check->a->content > ((check->a->next)->next)->content) //case 2 3 1
 	{
 		rra(check);
+		cantidad_ops = 1;
 	}
 	else
 		printf("El algoritmo order_3 esta dando problemas\n");
+	return (cantidad_ops);
 }
 
 void	order_2(t_check *check)

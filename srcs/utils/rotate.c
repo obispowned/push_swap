@@ -33,6 +33,7 @@ int				ra(t_check *check)
         check->a = check->a->next;
         ft_lstadd_back(&(check->a), aux);
         write(1, "ra\n", 3);
+//        print_list(check->a, 'a');
     }
     else
 		return (print_error("Error en: ra\n"));

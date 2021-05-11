@@ -12,6 +12,86 @@
 
 #include "../../headers/push_swap.h"
 
+void		order_100(t_check *check)
+{
+	long	*arr;
+	t_stack *stack;
+	int		len;
+
+	len = ft_lstlen(check->a);
+	stack = check->a;
+	arr = fill_me_array(check);
+	step100_1(check, arr, len);
+}
+
+
+int			search_me(t_stack *stack, long arr, int len)
+{
+	int		i;
+
+	i = 1;
+	while (stack)
+	{
+		if(stack->content == arr)
+			break ;
+		stack = stack->next;
+		i++;
+	}
+	return(i);
+}	
+
+void		step100_1(t_check *check, long *arr, int len)
+{
+	t_stack *a;
+	t_stack *b;
+	int		i;
+	int		res;
+	int		instructions;
+
+	instructions = 0;
+	a = check->a;
+	b = check->b;
+	i = 0;
+	while(len != 0 && (ft_lstlen(a) > 3))
+	{
+		if ((a && a->next && b && b->next) && ((a->content > (a->next)->content) && (b->content < (b->next)->content)))
+		{
+			ss(check);
+			instructions++;
+		}
+		res = search_me(check->a, arr[i], len);
+		if (res == 1)
+		{
+			pb(check);
+			instructions++;
+			len--;
+			i++;
+		}
+		if ((res <= (len/2)) && (check->a))
+		{
+			ra(check);
+			instructions++;
+		}
+		else if ((res > (len/2)) && (check->a) && (len > 1))
+		{
+			rra(check);
+			instructions++;
+		}
+		a = check->a;
+	}
+	if (ft_lstlen(a) == 3)
+		instructions += order_3(check);
+	while (check->b)
+	{
+		pa(check);
+		instructions++;
+	}
+	printf("Cantidad de instrucciones usadas: %d\n", instructions);
+}
+
+
+
+/*
 void		sort_array(long *array, int len)
 {
 	long	tmp;
@@ -60,7 +140,7 @@ void		find_mid(t_check *check, t_stack *stack, char stack_name)
 }
 
 void		mid(t_check *check, char stack_name)
-{ /*ok*/
+{ /*ok*//*
 	t_stack	*stack;
 
 	stack = (stack_name == 'a') ? check->a : check->b;
@@ -80,7 +160,7 @@ void		reset_moves(t_check *check)
 }
 
 void	push_mid(t_check *check, int split)
-{ /**ok*/
+{ /**ok*//*
 	t_stack	*stack;
 	t_stack	*stack_a_end;
 	int		flag;
@@ -131,4 +211,4 @@ void		order_100(t_check *check)
 		if (split == 3)
 			break ;
 	}
-}
+}*/

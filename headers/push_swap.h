@@ -34,6 +34,7 @@
 #include "msg.h"
 #include "get_next_line.h"
 
+
 /*
 *	INSTRUCTIONS
 */
@@ -62,7 +63,7 @@ int				rrr(t_check *check);
 void			order_100(t_check *check);
 void			order_5(t_check *check);
 void			order_4(t_check *check);
-void			order_3(t_check *check);
+int		        order_3(t_check *check);
 void			order_2(t_check *check);
 void			ia_order(t_check	*check);
 
@@ -93,5 +94,7 @@ void			moves_smallest(t_check *check, char stack_name);
 void			moves_biggest(t_check *check, char stack_name);
 void			find_moves(t_check *check, char stack_name);
 void			push_big_small(t_check *check, t_stack *stack, t_stack *stack_end);
+
+void		step100_1(t_check *check, long *arr, int len);
 
 #endif

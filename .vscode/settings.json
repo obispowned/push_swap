@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"algorithm": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"push_swap.h": "c"
 	}
 }
