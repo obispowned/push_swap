@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:13:03 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/26 17:52:38 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/13 20:28:03 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 int				rx(t_check *check, char *line)
 {
 	if (strcmp((const char *)line, "ra") == 0)
+    {
+        write(1, "ra\n", 3);
 		return (ra(check));
+    }
 	else if (strcmp((const char *)line, "rb") == 0)
+    {
+        write(1, "rb\n", 3);
 		return (rb(check));
+    }
     else if (strcmp((const char *)line, "rr") == 0)
         return (rr(check));
     return (1);
@@ -32,8 +38,6 @@ int				ra(t_check *check)
         aux = check->a;
         check->a = check->a->next;
         ft_lstadd_back(&(check->a), aux);
-        write(1, "ra\n", 3);
-//        print_list(check->a, 'a');
     }
     else
 		return (print_error("Error en: ra\n"));
@@ -49,7 +53,6 @@ int				rb(t_check *check)
         aux = check->b;
         check->b = (check->b)->next;
         ft_lstadd_back(&(check->b), aux);
-        write(1, "rb\n", 3);
     }
     else
 		return (print_error("Error en: rb\n"));

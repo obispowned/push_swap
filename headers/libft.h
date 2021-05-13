@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:15:52 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/27 17:58:48 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/13 18:46:35 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ typedef struct		s_stack
 {
 	long			content; //dato
 	struct s_stack	*next; //puntero al siguiente nodo
+	int				position;
+
 }					t_stack;
 
 typedef struct		s_check
@@ -24,7 +26,11 @@ typedef struct		s_check
 	t_stack			*a;
 	t_stack			*b;
 
-	int				print_stacks;
+	long			hold_first;
+	int				first_position;
+	long			hold_second;
+	int				second_position;
+/*	int				print_stacks;
 	int				do_write;
 	int				stack_len;
 	long			quarter;
@@ -41,7 +47,7 @@ typedef struct		s_check
 	int				small_rrotate;
 	int				small_flag;
 
-	int				after_rotate;
+	int				after_rotate;*/
 }					t_check;
 
 /*
