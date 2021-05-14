@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 11:44:45 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/14 17:28:34 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:38:40 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,16 @@ void			print_exit(char *str)
 {
 	write(1, str, ft_strlen(str));
 	exit(-1);
+}
+
+void	double_print(char **str)
+{
+	int	i;
+
+	i = 1;
+	while (str[i])
+	{
+		printf("%s\n",str[i]);
+		i++;
+	}
 }
