@@ -6,37 +6,56 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 20:24:46 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/26 18:08:13 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:30:23 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-int		main(int	argc, char	**argv)
+int	check_params2(char **file)
 {
-	t_check *check;
-	char 	**file;
+	int	i;
+
+	i = 0;
+	while (file[i])
+	{
+		if (ft_strlen(file[i]) > 10)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	check_params(char **file, int argc, char **argv, t_check *check)
+{
+	file = ft_split(argv[1], ' ');
+	if (!(check_params2(file)))
+		print_exit("Error\n");
+	if (!(no_repeated_numbers(file)))
+		print_exit("Error\n");
+	one_arg(argc, file, check);
+}
+
+int	main(int	argc, char	**argv)
+{
+	t_check	*check;
+	char	**file;
 
 	file = NULL;
-    check = (t_check *)malloc(sizeof(t_check));
+	check = (t_check *)malloc(sizeof(t_check));
 	check->b = NULL;
 	if (check_args(argc, argv) == 1)
-		return (print_error("Error1\n"));
-	if (argc == 2) //si solo hay un argumento "23 24 56", hago el split y lo meto en nodos
+		return (print_error("Error\n"));
+	if (argc == 2)
+		check_params(file, argc, argv, check);
+	else
 	{
-		file = ft_split(argv[1], ' ');
-		if(!(no_repeated_numbers(file)))
-			return(print_error("Error2\n"));
-		one_arg(argc, file, check);
-	}
-	else		//si me llo pasan en vario argumentos 23 24 56, vamos anadiendo nodos por cada arg
-	{
-		if(!(no_repeated_numbers(&argv[1])))
-			return(print_error("Error7\n"));
+		if (!(no_repeated_numbers(&argv[1])))
+			return (print_error ("Error\n"));
 		if (args(argc, argv, check) == 1)
-			return (print_error("Error3\n"));
+			return (print_error("Error\n"));
 	}
-	ia_order(check);
+	ia_order (check);
 	print_list(check->a, 'A');
 	print_list(check->b, 'B');
 	return (0);

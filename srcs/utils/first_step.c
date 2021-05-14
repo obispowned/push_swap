@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 18:43:24 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/13 21:17:49 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:30:58 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int			the_last_numbers(t_check *check, int len)
 
 	i = 0;
 	last_len = len % 5;
-
+	count = 0;
 	while (i < last_len)
 	{
 		if (check->a && check->a->next && check->b && check->b->next)
