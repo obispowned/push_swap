@@ -6,15 +6,13 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:13:05 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/13 20:26:37 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:31:20 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-// TODAS BIEN
-
-int				rrx(t_check *check, char *line)
+int	rrx(t_check *check, char *line)
 {
 	if (strcmp((const char *)line, "rra") == 0)
 	{
@@ -26,49 +24,49 @@ int				rrx(t_check *check, char *line)
 		write(1, "rrb\n", 4);
 		return (rrb(check));
 	}
-    else if (strcmp((const char *)line, "rrr") == 0)
-        return (rrr(check));
+	else if (strcmp((const char *)line, "rrr") == 0)
+		return (rrr(check));
 	else
 		return (1);
 }
 
-int				rra(t_check *check)
+int	rra(t_check *check)
 {
-    t_stack     *aux;
+	t_stack	*aux;
 
-    if ((check->a) && ((check->a)->next != NULL))
-    {
-        aux = check->a;
+	if ((check->a) && ((check->a)->next != NULL))
+	{
+		aux = check->a;
 		check->a = ft_lstlast(&(check->a));
 		(check->a)->next = aux;
 		while (aux->next != check->a)
 			aux = aux->next;
 		aux->next = NULL;
-    }
-    else
+	}
+	else
 		return (print_error("Error en: rra\n"));
-    return (0);
+	return (0);
 }
 
-int				rrb(t_check *check)
+int	rrb(t_check *check)
 {
-    t_stack     *aux;
+	t_stack	*aux;
 
-    if ((check->b) && ((check->b)->next != NULL))
-    {
-        aux = check->b;
+	if ((check->b) && ((check->b)->next != NULL))
+	{
+		aux = check->b;
 		check->b = ft_lstlast(&(check->b));
 		(check->b)->next = aux;
 		while (aux->next != check->b)
 			aux = aux->next;
 		aux->next = NULL;
-    }
-    else
+	}
+	else
 		return (print_error("Error en: rrb\n"));
-    return (0);
+	return (0);
 }
 
-int				rrr(t_check *check)
+int	rrr(t_check *check)
 {
 	rra(check);
 	rrb(check);

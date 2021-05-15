@@ -6,51 +6,23 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:26:41 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 15:07:21 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:41:36 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-// size_t				ft_strlen(char *s)
-// {
-// 	unsigned int	i;
-
-// 	i = 0;
-// 	while (s[i] != '\0')
-// 		i++;
-// 	return (i);
-// }
-
-char				*ft_strdup(char *s1)
-{
-	char			*new;
-	int				i;
-	int				size;
-
-	size = 0;
-	while (s1[size])
-		++size;
-	if (!(new = malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		new[i] = s1[i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
-}
-
-char				*ft_strchr(char *s, char c)
+char	*ft_strchr(char *s, char c)
 {
 	while (*s && *s != c)
 		s++;
-	return ((*s == c) ? s : NULL);
+	if (*s == c)
+		return (s);
+	else
+		return (NULL);
 }
 
-char				*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int				i;
 	int				j;
@@ -59,7 +31,8 @@ char				*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	count = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(s = malloc(sizeof(char) * count)))
+	s = malloc(sizeof(char) * count);
+	if (!s)
 		return (NULL);
 	while (s1[i])
 	{
@@ -77,7 +50,7 @@ char				*ft_strjoin(char *s1, char *s2)
 	return (s);
 }
 
-char				*ft_substr(char *s, unsigned int start, unsigned int len)
+char	*ft_substr(char *s, unsigned int start, unsigned int len)
 {
 	char			*dest;
 	unsigned int	i;
@@ -90,9 +63,9 @@ char				*ft_substr(char *s, unsigned int start, unsigned int len)
 	i = 0;
 	total = start + len;
 	if (len < (lenglo - start))
-		dest = (char*)malloc(sizeof(char) * (len + 1));
+		dest = (char *)malloc(sizeof(char) * (len + 1));
 	else
-		dest = (char*)malloc(sizeof(char) * (lenglo - start + 1));
+		dest = (char *)malloc(sizeof(char) * (lenglo - start + 1));
 	if (!dest)
 		return (NULL);
 	while (start < total)

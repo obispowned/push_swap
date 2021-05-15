@@ -6,14 +6,13 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 18:43:24 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/14 17:30:58 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 19:26:14 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-
-void		tell_me_the_positions(t_stack	**stack, long *a)
+void	tell_me_the_positions(t_stack	**stack, long *a)
 {
 	t_stack	*aux;
 	int		i;
@@ -30,10 +29,12 @@ void		tell_me_the_positions(t_stack	**stack, long *a)
 	}
 }
 
-void		search_me_hold(t_check	*check, int len, int multiplicador)
-{		//esto me busca hold up y hold down
+void	search_me_hold(t_check	*check, int len, int multiplicador)
+{
 	t_stack	*aux;
-	int		i, j, z;
+	int		i;
+	int		j;
+	int		z;
 
 	i = 0;
 	j = 0;
@@ -45,7 +46,7 @@ void		search_me_hold(t_check	*check, int len, int multiplicador)
 		if (aux->position <= ((len / 5) * multiplicador))
 		{
 			check->hold_first = aux->content;
-			break;
+			break ;
 		}
 		aux = aux->next;
 	}
@@ -64,9 +65,9 @@ void		search_me_hold(t_check	*check, int len, int multiplicador)
 	check->second_position = z;
 }
 
-int		first_step(t_check *check, int len)
-{ //meto los todos los chunks a B
-	int 	i;
+int	first_step(t_check *check, int len)
+{
+	int		i;
 	int		multiplicador;
 	int		count;
 
@@ -75,12 +76,12 @@ int		first_step(t_check *check, int len)
 	while (multiplicador <= 5)
 	{
 		i = 0;
-		while (i < len/5)
+		while (i < len / 5)
 		{
 			search_me_hold(check, len, multiplicador);
 			if (check->first_position <= (len - check->second_position))
 			{
-				while(check->a->content != check->hold_first)
+				while (check->a->content != check->hold_first)
 				{
 					rx(check, "ra");
 					count ++;
@@ -94,7 +95,7 @@ int		first_step(t_check *check, int len)
 			}
 			else
 			{
-				while(check->a->content != check->hold_second)
+				while (check->a->content != check->hold_second)
 				{
 					rrx(check, "rra");
 					count ++;
@@ -114,7 +115,7 @@ int		first_step(t_check *check, int len)
 	return (count);
 }
 
-int			the_last_numbers(t_check *check, int len)
+int	the_last_numbers(t_check *check, int len)
 {
 	int		last_len;
 	int		i;
@@ -127,8 +128,8 @@ int			the_last_numbers(t_check *check, int len)
 	{
 		if (check->a && check->a->next && check->b && check->b->next)
 		{
-			if ((check->a->content > check->a->next->content) &&
-			(check->b->content < check->b->next->content))
+			if ((check->a->content > check->a->next->content)
+				&& (check->b->content < check->b->next->content))
 			{
 				ss(check);
 				count ++;
@@ -141,7 +142,7 @@ int			the_last_numbers(t_check *check, int len)
 	return (count);
 }
 
-void		order_100(t_check *check, long	*a)
+void	order_100(t_check *check, long	*a)
 {
 	t_stack	*stack;
 	int		len;

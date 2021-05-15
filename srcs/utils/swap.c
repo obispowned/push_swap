@@ -6,13 +6,13 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:06:29 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/13 20:32:31 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:51:57 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-int				sx(t_check *check, char *line)
+int	sx(t_check *check, char *line)
 {
 	if (strcmp((const char *)line, "sa") == 0)
 	{
@@ -29,8 +29,7 @@ int				sx(t_check *check, char *line)
 	return (1);
 }
 
-
-int				sa(t_check *check)
+int	sa(t_check *check)
 {
 	long int	aux;
 
@@ -42,10 +41,10 @@ int				sa(t_check *check)
 	}
 	else
 		return (print_error("Error en: sa\n"));
-	return(0);
+	return (0);
 }
 
-int				sb(t_check *check)
+int	sb(t_check *check)
 {
 	long int	aux;
 
@@ -57,10 +56,10 @@ int				sb(t_check *check)
 	}
 	else
 		return (print_error("Error en: sb\n"));
-	return(0);
+	return (0);
 }
 
-int				ss(t_check *check)
+int	ss(t_check *check)
 {
 	sa(check);
 	sb(check);

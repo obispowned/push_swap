@@ -6,13 +6,13 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 18:07:47 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/13 21:23:21 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:15:02 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-void		order_4(t_check *check)
+void	order_4(t_check *check)
 {
 	long	*arr;
 	t_stack	*stack;
@@ -29,7 +29,7 @@ void		order_4(t_check *check)
 	pa(check);
 }
 
-void		order_5(t_check *check)
+void	order_5(t_check *check)
 {
 	long	*a;
 	t_stack	*stack;
@@ -55,42 +55,27 @@ void		order_5(t_check *check)
 	pa(check);
 }
 
-int		order_3(t_check *check)
+int	order_3(t_check *check)
 {
-	int	cantidad_ops;
-
-	cantidad_ops = 0;
-	if (check->a->content > (check->a->next)->content && check->a->content < ((check->a->next)->next)->content) //case 2 1 3
-	{
-		cantidad_ops = 1;
-		sx(check, "sa");
-	}
-	else if (check->a->content > (check->a->next)->content && (check->a->next)->content > ((check->a->next)->next)->content) //case 3 2 1
-	{
-		sx(check, "sa");
-		rrx(check, "rra");
-		cantidad_ops = 2;
-	}
-	else if (check->a->content > (check->a->next)->content && (check->a->next)->content < ((check->a->next)->next)->content) //case 3 1 2
-	{
-		rx(check, "ra");
-		cantidad_ops = 1;
-	}
-	else if (check->a->content < (check->a->next)->content && (check->a->next)->content > ((check->a->next)->next)->content
-	&& check->a->content < ((check->a->next)->next)->content) //case 1 3 2
-	{
-		sx(check, "sa");
-		rx(check, "ra");
-		cantidad_ops = 2;
-	}
-	else if (check->a->content < (check->a->next)->content && check->a->content > ((check->a->next)->next)->content) //case 2 3 1
-	{
-		rrx(check, "rra");
-		cantidad_ops = 1;
-	}
+	if (check->a->content > (check->a->next)->content
+		&& check->a->content < ((check->a->next)->next)->content)
+		return (order_3_c213(check));
+	else if (check->a->content > (check->a->next)->content
+		&& (check->a->next)->content > ((check->a->next)->next)->content)
+		return (order_3_c321(check));
+	else if (check->a->content > (check->a->next)->content
+		&& (check->a->next)->content < ((check->a->next)->next)->content)
+		return (order_3_c312(check));
+	else if (check->a->content < (check->a->next)->content
+		&& (check->a->next)->content > ((check->a->next)->next)->content
+		&& check->a->content < ((check->a->next)->next)->content)
+		return (order_3_c132(check));
+	else if (check->a->content < (check->a->next)->content
+		&& check->a->content > ((check->a->next)->next)->content)
+		return (order_3_c231(check));
 	else
-		printf("El algoritmo order_3 esta dando problemas\n");
-	return (cantidad_ops);
+		print_exit("El algoritmo order_3 esta dando problemas\n");
+	return (0);
 }
 
 void	order_2(t_check *check)

@@ -6,16 +6,17 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 21:16:44 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/13 22:06:08 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 17:57:37 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-int		second_step_500(t_check *check, int len, long *a)
+int	second_step_500(t_check *check, int len, long *a)
 {
 	t_stack	*stack;
-	int		i, z;
+	int		i;
+	int		z;
 	int		counter;
 
 	counter = 0;
@@ -25,7 +26,7 @@ int		second_step_500(t_check *check, int len, long *a)
 	{
 		stack = check->b;
 		z = give_me_the_next_num(check, a[i]);
-		if (z <= (ft_lstlen(check->b)/2))
+		if (z <= (ft_lstlen(check->b) / 2))
 		{
 			while (check->b->content != a[i])
 			{
@@ -56,10 +57,12 @@ int		second_step_500(t_check *check, int len, long *a)
 	return (counter);
 }
 
-void		search_me_hold_500(t_check	*check, int len, int multiplicador)
-{		//esto me busca hold up y hold down
+void	search_me_hold_500(t_check	*check, int len, int multiplicador)
+{
 	t_stack	*aux;
-	int		i, j, z;
+	int		i;
+	int		j;
+	int		z;
 
 	i = 0;
 	j = 0;
@@ -71,7 +74,7 @@ void		search_me_hold_500(t_check	*check, int len, int multiplicador)
 		if (aux->position <= ((len / 11) * multiplicador))
 		{
 			check->hold_first = aux->content;
-			break;
+			break ;
 		}
 		aux = aux->next;
 	}
@@ -90,9 +93,9 @@ void		search_me_hold_500(t_check	*check, int len, int multiplicador)
 	check->second_position = z;
 }
 
-int		first_step_500(t_check *check, int len)
-{ //meto los todos los chunks a B
-	int 	i;
+int	first_step_500(t_check *check, int len)
+{
+	int		i;
 	int		multiplicador;
 	int		counter;
 
@@ -101,12 +104,12 @@ int		first_step_500(t_check *check, int len)
 	while (multiplicador <= 11)
 	{
 		i = 0;
-		while (i < len/11)
+		while (i < len / 11)
 		{
 			search_me_hold_500(check, len, multiplicador);
 			if (check->first_position <= (len - check->second_position))
 			{
-				while(check->a->content != check->hold_first)
+				while (check->a->content != check->hold_first)
 				{
 					rx(check, "ra");
 					counter ++;
@@ -120,7 +123,7 @@ int		first_step_500(t_check *check, int len)
 			}
 			else
 			{
-				while(check->a->content != check->hold_second)
+				while (check->a->content != check->hold_second)
 				{
 					rrx(check, "rra");
 					counter ++;
@@ -140,7 +143,7 @@ int		first_step_500(t_check *check, int len)
 	return (counter);
 }
 
-int			the_last_numbers_500(t_check *check, int len)
+int	the_last_numbers_500(t_check *check, int len)
 {
 	int		last_len;
 	int		i;
@@ -153,8 +156,8 @@ int			the_last_numbers_500(t_check *check, int len)
 	{
 		if (check->a && check->a->next && check->b && check->b->next)
 		{
-			if ((check->a->content > check->a->next->content) &&
-			(check->b->content < check->b->next->content))
+			if ((check->a->content > check->a->next->content)
+				&& (check->b->content < check->b->next->content))
 			{
 				ss(check);
 				counter ++;
@@ -167,7 +170,7 @@ int			the_last_numbers_500(t_check *check, int len)
 	return (counter);
 }
 
-void		order_500(t_check *check, long	*a)
+void	order_500(t_check *check, long	*a)
 {
 	t_stack	*stack;
 	int		len;

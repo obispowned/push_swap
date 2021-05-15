@@ -6,13 +6,21 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:29:27 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 16:19:36 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 17:26:28 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-int							ft_atoi(const char *str)
+int	ft_atoi2(int sign)
+{
+	if (sign == 1)
+		return (-1);
+	else
+		return (0);
+}
+
+int	ft_atoi(const char *str)
 {
 	unsigned long long int	num;
 	int						sign;
@@ -20,8 +28,8 @@ int							ft_atoi(const char *str)
 
 	sign = 1;
 	i = 0;
-	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\v') ||
-			(str[i] == '\f') || (str[i] == '\r') || (str[i] == '\n'))
+	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\v')
+		|| (str[i] == '\f') || (str[i] == '\r') || (str[i] == '\n'))
 		i++;
 	if (str[i] == '-')
 		sign = -1;
@@ -33,16 +41,16 @@ int							ft_atoi(const char *str)
 		if (num < 9223372036854775807)
 			num = num * 10 + str[i++] - 48;
 		else
-			return (sign == 1 ? -1 : 0);
+			return (ft_atoi2(sign));
 	}
 	return (sign * num);
 }
 
 long long	ft_atol(const char *str)
 {
-	long i;
-	long neg;
-	long num;
+	long	i;
+	long	neg;
+	long	num;
 
 	i = 0;
 	neg = 1;
@@ -62,32 +70,3 @@ long long	ft_atol(const char *str)
 	}
 	return (num * neg);
 }
-
-
-/*
-long long						ft_atol(const char *str)
-{
-	unsigned long long		num;
-	long long				sign;
-	int						i;
-
-	sign = 1;
-	i = 0;
-	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\v') ||
-			(str[i] == '\f') || (str[i] == '\r') || (str[i] == '\n'))
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	num = 0;
-	while (str[i] >= 48 && str[i] <= 57 && str[i] != '\0')
-	{
-		if (num < 9223372036854775807)
-			num = num * 10 + str[i++] - 48;
-		else
-			return (sign == 1 ? -1 : 0);
-	}
-	return (sign * num);
-}
-*/

@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:37 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/14 17:14:23 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:46:18 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,11 @@ void			search_me_hold_500(t_check	*check, int len, int multiplicador);
 int				first_step_500(t_check *check, int len);
 int				the_last_numbers_500(t_check *check, int len);
 int				second_step_500(t_check *check, int len, long *a);
+
+int				order_3_c213(t_check *check);
+int				order_3_c321(t_check *check);
+int				order_3_c312(t_check *check);
+int				order_3_c132(t_check *check);
+int				order_3_c231(t_check *check);
 
 #endif

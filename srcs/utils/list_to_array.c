@@ -6,28 +6,30 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 18:59:51 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/26 19:03:51 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 17:43:58 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-long		*order_array(long	*a, int nelementos)
-{		//ORDENA EL ARRAY CON N ELEMENTOS
-	int i,j;                //Variables contadoras del ciclo.
-	long temp = 0;             //Variable temporal.
+long	*order_array(long	*a, int nelementos)
+{
+	int		i;
+	int		j;
+	long	temp;
 
+	temp = 0;
 	i = 1;
 	while (i < nelementos)
 	{
 		j = 0;
-		while (j < nelementos-i) // for(j=0; j < Nelementos-i; j++) es menor y no menor igual
+		while (j < nelementos - i)
 		{
-			if (a[j] > a[j+1])//Condicion mayor-menor
+			if (a[j] > a[j + 1])
 			{
 				temp = a[j];
-				a[j] = a[j+1];
-				a[j+1] = temp;
+				a[j] = a[j + 1];
+				a[j + 1] = temp;
 			}
 			j++;
 		}
@@ -36,8 +38,8 @@ long		*order_array(long	*a, int nelementos)
 	return (a);
 }
 
-long		*fill_me_array(t_check *check)
-{		//ME TRAE UN ARRAY DE LONG CON LOS NUMEROS DE LA LISTA A Y LO ORDENA
+long	*fill_me_array(t_check *check)
+{
 	t_stack	*stack;
 	long	*a;
 	int		i;

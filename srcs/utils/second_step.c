@@ -6,14 +6,14 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 18:45:35 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/13 21:08:52 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:34:36 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-int			give_me_the_next_num(t_check *check, long a)
-{	//busca el numero a en check->b y me devuelve la posicion
+int	give_me_the_next_num(t_check *check, long a)
+{
 	t_stack	*aux;
 	int		i;
 
@@ -23,16 +23,17 @@ int			give_me_the_next_num(t_check *check, long a)
 	{
 		i++;
 		if (a == aux->content)
-			break;
+			break ;
 		aux = aux->next;
 	}
-	return(i);
+	return (i);
 }
 
-int		second_step(t_check *check, int len, long *a)
+int	second_step(t_check *check, int len, long *a)
 {
 	t_stack	*stack;
-	int		i, z;
+	int		i;
+	int		z;
 	int		count;
 
 	count = 0;
@@ -42,7 +43,7 @@ int		second_step(t_check *check, int len, long *a)
 	{
 		stack = check->b;
 		z = give_me_the_next_num(check, a[i]);
-		if (z <= (ft_lstlen(check->b)/2))
+		if (z <= (ft_lstlen(check->b) / 2))
 		{
 			while (check->b->content != a[i])
 			{

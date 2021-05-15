@@ -6,15 +6,13 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:13:08 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/26 18:12:38 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:29:41 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-//  TODO BIEN, REVISAR RETURNS
-
-int				px(t_check *check, char *line)
+int	px(t_check *check, char *line)
 {
 	if (strcmp((const char *)line, "pa") == 0)
 		return (pa(check));
@@ -23,9 +21,10 @@ int				px(t_check *check, char *line)
 	return (1);
 }
 
-int				pa(t_check *check)
+int	pa(t_check *check)
 {
-	t_stack *aux, *aux2;
+	t_stack	*aux;
+	t_stack	*aux2;
 
 	if (check->b)
 	{
@@ -40,9 +39,10 @@ int				pa(t_check *check)
 	return (0);
 }
 
-int				pb(t_check *check)
+int	pb(t_check *check)
 {
-	t_stack *aux, *aux2;
+	t_stack	*aux;
+	t_stack	*aux2;
 
 	if (check->a)
 	{

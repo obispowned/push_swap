@@ -6,83 +6,80 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:26:00 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 15:07:23 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:49:02 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-void				destroy(char **str)
+char	*ft_strdup(const char *src)
 {
-	if (*str)
-	{
-		free(*str);
-		*str = NULL;
-	}
-}
-
-char				*feed(char *aux, char **line, int *len)
-{
-	int				i;
-	char			*temp;
+	int		i;
+	int		j;
+	char	*s2;
 
 	i = 0;
-	while (aux[i] != '\n' && aux[i] != '\0')
+	j = 0;
+	while (src[i])
 		i++;
-	if (aux[i] == '\n')
+	s2 = malloc((i + 1) * sizeof(char));
+	if (!(s2))
+		return (0);
+	while (j < i)
 	{
-		*line = ft_substr(aux, 0, i);
-		temp = ft_substr(aux, i + 1, ft_strlen(aux) - i - 1);
-		destroy(&aux);
-		aux = temp;
-		*len = 1;
+		s2[j] = src[j];
+		j++;
 	}
-	else
-	{
-		*line = ft_strdup(aux);
-		destroy(&aux);
-		*len = 0;
-	}
-	return (aux);
+	s2[j] = '\0';
+	return (s2);
 }
 
-int					check_error(int len, char *aux, char **line)
+int	print_line(char **file, char **line, int i)
 {
-	if (len < 0)
-		return (-1);
-	else if (len == 0 && aux == 0)
+	char	*temp;
+	int		x;
+
+	if (i == 0 && !file)
 	{
 		*line = ft_strdup("");
 		return (0);
 	}
-	return (1);
+	x = 0;
+	temp = 0;
+	while ((*file)[x] != '\n' && (*file)[x])
+		x++;
+	*line = ft_substr(*file, 0, x);
+	if ((*file)[x] == '\n')
+		temp = ft_strdup(ft_strchr(*file, '\n') + 1);
+	free(*file);
+	*file = temp;
+	if (!temp)
+		return (0);
+	else
+		return (1);
 }
 
-int					get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	int				len;
-	char			buff[BUFFER_SIZE + 1];
-	static char		*aux[4096];
-	char			*temp;
+	int			i;
+	static char	*file[4096];
+	char		*temp;
+	char		buf[1 + 1];
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1)
-		return (-1);
-	while ((len = read(fd, buff, BUFFER_SIZE)) > 0)
+	i = 1;
+	while (i > 0)
 	{
-		buff[len] = '\0';
-		if (!aux[fd])
-			aux[fd] = ft_strdup(buff);
-		else
-		{
-			temp = ft_strjoin(aux[fd], buff);
-			destroy(&aux[fd]);
-			aux[fd] = temp;
-		}
-		if (ft_strchr(aux[fd], '\n'))
+		i = read(fd, buf, 1);
+		if (i < 0)
+			return (-1);
+		buf[i] = '\0';
+		if (file[fd] == NULL)
+			file[fd] = ft_strdup("");
+		temp = ft_strjoin(file[fd], buf);
+		free(file[fd]);
+		file[fd] = temp;
+		if (ft_strchr(file[fd], '\n'))
 			break ;
 	}
-	if (check_error(len, aux[fd], &*line) < 1)
-		return (check_error(len, *aux, &*line));
-	aux[fd] = feed(aux[fd], line, &len);
-	return (len);
+	return (print_line(&file[fd], line, i));
 }

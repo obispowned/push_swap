@@ -6,24 +6,25 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:39 by agutierr          #+#    #+#             */
-/*   Updated: 2021/04/24 15:07:28 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 17:48:58 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-t_stack		*ft_lstnew(int content)
+t_stack	*ft_lstnew(int content)
 {
 	t_stack	*new;
 
-	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (!new)
 		return (NULL);
 	new->content = content;
 	new->next = NULL;
 	return (new);
 }
 
-void		ft_lstadd_front(t_stack **alst, t_stack *new)
+void	ft_lstadd_front(t_stack **alst, t_stack *new)
 {
 	t_stack	*aux;
 
@@ -32,7 +33,7 @@ void		ft_lstadd_front(t_stack **alst, t_stack *new)
 	new->next = aux;
 }
 
-void		ft_lstadd_back(t_stack **alst, t_stack *new)
+void	ft_lstadd_back(t_stack **alst, t_stack *new)
 {
 	t_stack		*p;
 
@@ -52,7 +53,7 @@ void		ft_lstadd_back(t_stack **alst, t_stack *new)
 	}
 }
 
-int			ft_lstlen(t_stack *lst)
+int	ft_lstlen(t_stack *lst)
 {
 	int		c;
 	t_stack	*tmp;
@@ -68,7 +69,7 @@ int			ft_lstlen(t_stack *lst)
 	return (c);
 }
 
-t_stack		*ft_lstlast(t_stack **lst)
+t_stack	*ft_lstlast(t_stack **lst)
 {
 	t_stack	*p;
 
@@ -81,41 +82,4 @@ t_stack		*ft_lstlast(t_stack **lst)
 	}
 	else
 		return (0);
-}
-
-t_stack		*lst_del_first(t_stack *stack) /* falta comprobacion */
-{
-	t_stack *aux;
-
-	if (stack != NULL)
-	{
-		aux = stack;
-		stack = stack->next;
-		free(aux);
-	}
-	else
-		print_error("Lista vacia");
-	return (stack);
-}
-
-void		lst_del_last(t_stack *stack) /* falta comprobacion */
-{
-	t_stack *aux;
-	t_stack *tmp;
-
-	if (stack != NULL)
-	{
-		aux = stack;
-		tmp = stack;
-		while(aux->next != NULL)
-        {
-            tmp = aux;
-            aux = aux->next;
-        }
-		if(aux == stack)
-            stack = NULL;
-        else
-            tmp->next = NULL;
-        free(aux);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 20:29:53 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/14 17:54:29 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/15 19:20:48 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,59 +86,44 @@ int	check_args(int argc, char **argv)
 	return (0);
 }
 
-char	*check_OK_KO(t_stack **stack)
+int	check_stdin2(t_check *check, char *line)
 {
-	t_stack	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = *stack;
-	if (tmp)
-	{
-		i = tmp->content;
-		tmp = tmp->next;
-		while (tmp->next != NULL)
-		{
-			if (i > tmp->content)
-				return ("KO\n");
-			i = tmp->content;
-			tmp = tmp->next;
-		}
-		if (i > tmp->content)
-			return ("KO\n");
-	}
+	if ((strcmp((const char *)line, "sa") == 0)
+		|| (strcmp((const char *)line, "sb") == 0)
+		|| (strcmp((const char *)line, "ss") == 0))
+		sx(check, line);
+	else if ((strcmp((const char *)line, "ra") == 0)
+		|| (strcmp((const char *)line, "rb") == 0)
+		|| (strcmp((const char *)line, "rr") == 0))
+		rx(check, line);
+	else if ((strcmp((const char *)line, "rra") == 0)
+		|| (strcmp((const char *)line, "rrb") == 0)
+		|| (strcmp((const char *)line, "rrr") == 0))
+		rrx(check, line);
+	else if ((strcmp((const char *)line, "pa") == 0)
+		|| (strcmp((const char *)line, "pb") == 0))
+		px(check, line);
+	else if (strcmp((const char *)line, "") == 0)
+		return (-1);
 	else
-		return ("KO\n");
-	return ("OK\n");
+		return (print_error("Error\n"));
+	return (0);
 }
 
 int	check_stdin(t_check *check)
 {
 	int		size;
 	char	*line;
+	int		ret;
 
 	size = get_next_line(0, &line);
 	while (size > 0)
 	{
-		if ((strcmp((const char *)line, "sa") == 0)
-			|| (strcmp((const char *)line, "sb") == 0)
-			|| (strcmp((const char *)line, "ss") == 0))
-			sx(check, line);
-		else if ((strcmp((const char *)line, "ra") == 0)
-			|| (strcmp((const char *)line, "rb") == 0)
-			|| (strcmp((const char *)line, "rr") == 0))
-			rx(check, line);
-		else if ((strcmp((const char *)line, "rra") == 0)
-			|| (strcmp((const char *)line, "rrb") == 0)
-			|| (strcmp((const char *)line, "rrr") == 0))
-			rrx(check, line);
-		else if ((strcmp((const char *)line, "pa") == 0)
-			|| (strcmp((const char *)line, "pb") == 0))
-			px(check, line);
-		else if (strcmp((const char *)line, "") == 0)
+		ret = check_stdin2(check, line);
+		if (ret == -1)
 			break ;
-		else
-			return (print_error("Error\n"));
+		else if (ret == 1)
+			return (1);
 		free(line);
 		size = get_next_line(0, &line);
 	}
