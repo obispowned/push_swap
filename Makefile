@@ -6,24 +6,35 @@
 #    By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/24 16:02:20 by agutierr          #+#    #+#              #
-#    Updated: 2021/04/25 17:48:37 by agutierr         ###   ########.fr        #
+#    Updated: 2021/05/17 15:55:37 by agutierr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CHECKER			=	checker
 PUSH_SWAP		=	push_swap
 
-SRCS_CHECKER	=	./srcs/checker/*.c
-SRCS_PUSH_SWAP	=	./srcs/push_swap/*.c
-SRCS_UTILS		=	./srcs/utils/*.c
+SRCS_CHECKER	=	./srcs/checker/checker.c
+SRCS_PUSH_SWAP	=	./srcs/push_swap/push_swap.c
+SRCS_UTILS		=	./srcs/utils/args.c ./srcs/utils/first_step.c\
+					./srcs/utils/ft_atoi.c ./srcs/utils/ft_split.c\
+					./srcs/utils/ft_strcmp.c ./srcs/utils/ft_strlen.c\
+					./srcs/utils/get_next_line_utils.c ./srcs/utils/get_next_line.c\
+					./srcs/utils/is_digit.c ./srcs/utils/list_to_array.c\
+					./srcs/utils/list.c ./srcs/utils/list2.c\
+					./srcs/utils/order_3.c ./srcs/utils/order_500.c\
+					./srcs/utils/order.c ./srcs/utils/printer.c\
+					./srcs/utils/push.c ./srcs/utils/reverse_rotate.c\
+					./srcs/utils/rotate.c ./srcs/utils/second_step.c\
+					./srcs/utils/swap.c ./srcs/utils/validator.c\
+					./srcs/utils/cleaner.c\
 
 SANITIZE		=	-fsanitize=address
 
 #########################################################
 
-FLAGS			= 
+FLAGS			= -Werror -Wextra -Wall
 
-GCC 			= gcc -g3
+GCC 			= gcc
 
 RED 			= \033[0;31m
 PURPLE			= \033[0;35m
@@ -45,8 +56,8 @@ fclean:	clean
 
 clean :
 	rm -f $(CHECKER) $(PUSH_SWAP)
-	@echo "\033[0;31m[BORRANDO EJECUTABLE...]"
+	@echo "\033[0;31m[BORRANDO EJECUTABLE...]\033[1;32m"
 
 re:		fclean all
 
-.PHONY:	clean all
+.PHONY:	clean all fclean re

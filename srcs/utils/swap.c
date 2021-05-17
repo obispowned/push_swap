@@ -6,22 +6,24 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:06:29 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/15 18:51:57 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/17 13:59:26 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-int	sx(t_check *check, char *line)
+int	sx(t_check *check, char *line, char ps)
 {
 	if (strcmp((const char *)line, "sa") == 0)
 	{
-		write(1, "sa\n", 3);
+		if (ps == 'p')
+			write(1, "sa\n", 3);
 		return (sa(check));
 	}
 	else if (strcmp((const char *)line, "sb") == 0)
 	{
-		write(1, "sb\n", 3);
+		if (ps == 'p')
+			write(1, "sb\n", 3);
 		return (sb(check));
 	}
 	else if (strcmp((const char *)line, "ss") == 0)
@@ -39,8 +41,6 @@ int	sa(t_check *check)
 		check->a->content = check->a->next->content;
 		check->a->next->content = aux;
 	}
-	else
-		return (print_error("Error en: sa\n"));
 	return (0);
 }
 
@@ -54,8 +54,6 @@ int	sb(t_check *check)
 		check->b->content = check->b->next->content;
 		check->b->next->content = aux;
 	}
-	else
-		return (print_error("Error en: sb\n"));
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 20:24:46 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/14 17:30:23 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/17 17:15:38 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	check_params(char **file, int argc, char **argv, t_check *check)
 	if (!(no_repeated_numbers(file)))
 		print_exit("Error\n");
 	one_arg(argc, file, check);
+	double_kill(file);
 }
 
 int	main(int	argc, char	**argv)
@@ -55,8 +56,7 @@ int	main(int	argc, char	**argv)
 		if (args(argc, argv, check) == 1)
 			return (print_error("Error\n"));
 	}
+	system("leaks push_swap");
 	ia_order (check);
-	print_list(check->a, 'A');
-	print_list(check->b, 'B');
 	return (0);
 }

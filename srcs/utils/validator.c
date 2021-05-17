@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 15:07:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/15 19:21:07 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/17 13:09:20 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,21 @@ char	*check_OK_KO(t_stack **stack)
 	else
 		return ("KO\n");
 	return ("OK\n");
+}
+
+int	is_this_order(t_stack *stack)
+{
+	t_stack *aux;
+
+	aux = stack;
+	while (aux)
+	{
+		if (aux->next)
+		{
+			if (aux->content > aux->next->content)
+				return (0);
+		}
+		aux = aux->next;
+	}
+	return (1);
 }

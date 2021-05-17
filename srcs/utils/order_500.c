@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 21:16:44 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/15 17:57:37 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/17 16:52:56 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	second_step_500(t_check *check, int len, long *a)
 			while (check->b->content != a[i])
 			{
 				counter ++;
-				rx(check, "rb");
+				rx(check, "rb", 'p');
 			}
 			if (check->b->content == a[i])
 			{
 				counter ++;
-				pa(check);
+				px(check, "pa", 'p');
 			}
 		}
 		else
@@ -44,12 +44,12 @@ int	second_step_500(t_check *check, int len, long *a)
 			while (check->b->content != a[i])
 			{
 				counter ++;
-				rrx(check, "rrb");
+				rrx(check, "rrb", 'p');
 			}
 			if (check->b->content == a[i])
 			{
 				counter ++;
-				pa(check);
+				px(check, "pa", 'p');
 			}
 		}
 		i--;
@@ -111,13 +111,13 @@ int	first_step_500(t_check *check, int len)
 			{
 				while (check->a->content != check->hold_first)
 				{
-					rx(check, "ra");
+					rx(check, "ra", 'p');
 					counter ++;
 				}
 				if ((check->a->content) == (check->hold_first))
 				{
 					counter ++;
-					pb(check);
+					px(check, "pb", 'p');
 					i++;
 				}
 			}
@@ -125,13 +125,13 @@ int	first_step_500(t_check *check, int len)
 			{
 				while (check->a->content != check->hold_second)
 				{
-					rrx(check, "rra");
+					rrx(check, "rra", 'p');
 					counter ++;
 				}
 				if ((check->a->content) == (check->hold_second))
 				{
 					counter ++;
-					pb(check);
+					px(check, "pb", 'p');
 					i++;
 				}
 			}
@@ -159,11 +159,11 @@ int	the_last_numbers_500(t_check *check, int len)
 			if ((check->a->content > check->a->next->content)
 				&& (check->b->content < check->b->next->content))
 			{
-				ss(check);
+				sx(check, "ss", 'p');
 				counter ++;
 			}
 		}
-		pb(check);
+		px(check, "pb", 'p');
 		counter ++;
 		i++;
 	}
@@ -180,5 +180,4 @@ void	order_500(t_check *check, long	*a)
 	len = ft_lstlen(check->a);
 	counter = first_step_500(check, len);
 	counter += second_step_500(check, len, a);
-	printf("| Instrucciones utilizadas: %d |\n", counter);
 }

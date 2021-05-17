@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 20:29:53 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/15 19:20:48 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/17 17:16:38 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	one_arg(int argc, char **file, t_check *check)
 	int			i;
 	long long	j;
 
+	(void)argc;
 	j = atol (file[0]);
 	i = 1;
 	if (j > 2147483647 || j < -2147483648)
@@ -56,6 +57,7 @@ int	args(int argc, char **argv, t_check *check)
 		ft_lstadd_back(&check->a, ft_lstnew(j));
 		i++;
 	}
+	double_kill(check_nums);
 	return (0);
 }
 
@@ -76,9 +78,7 @@ int	check_args(int argc, char **argv)
 		{
 			if (argv[i][j] == '-' && ((!argv[i][j + 1])
 				|| (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')))
-			{
 				return (1);
-			}
 			j++;
 		}
 		i++;
@@ -91,18 +91,18 @@ int	check_stdin2(t_check *check, char *line)
 	if ((strcmp((const char *)line, "sa") == 0)
 		|| (strcmp((const char *)line, "sb") == 0)
 		|| (strcmp((const char *)line, "ss") == 0))
-		sx(check, line);
+		sx(check, line, 'c');
 	else if ((strcmp((const char *)line, "ra") == 0)
 		|| (strcmp((const char *)line, "rb") == 0)
 		|| (strcmp((const char *)line, "rr") == 0))
-		rx(check, line);
+		rx(check, line, 'c');
 	else if ((strcmp((const char *)line, "rra") == 0)
 		|| (strcmp((const char *)line, "rrb") == 0)
 		|| (strcmp((const char *)line, "rrr") == 0))
-		rrx(check, line);
+		rrx(check, line, 'c');
 	else if ((strcmp((const char *)line, "pa") == 0)
 		|| (strcmp((const char *)line, "pb") == 0))
-		px(check, line);
+		px(check, line, 'c');
 	else if (strcmp((const char *)line, "") == 0)
 		return (-1);
 	else

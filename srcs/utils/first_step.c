@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 18:43:24 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/15 19:26:14 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/17 15:11:45 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ int	first_step(t_check *check, int len)
 			{
 				while (check->a->content != check->hold_first)
 				{
-					rx(check, "ra");
+					rx(check, "ra", 'p');
 					count ++;
 				}
 				if ((check->a->content) == (check->hold_first))
 				{
 					count ++;
-					pb(check);
+					px(check, "pb", 'p');
 					i++;
 				}
 			}
@@ -97,13 +97,13 @@ int	first_step(t_check *check, int len)
 			{
 				while (check->a->content != check->hold_second)
 				{
-					rrx(check, "rra");
+					rrx(check, "rra", 'p');
 					count ++;
 				}
 				if ((check->a->content) == (check->hold_second))
 				{
 					count ++;
-					pb(check);
+					px(check, "pb", 'p');
 					i++;
 				}
 			}
@@ -148,9 +148,12 @@ void	order_100(t_check *check, long	*a)
 	int		len;
 	int		count;
 
+	count = 0;
 	stack = check->a;
 	len = ft_lstlen(check->a);
-	count = first_step(check, len);
-	count += second_step(check, len, a);
-	printf("| Instrucciones utilizadas: %d |\n", count);
+	if (!(is_this_order(check->a)))
+	{
+		count += first_step(check, len);
+		count += second_step(check, len, a);
+	}
 }

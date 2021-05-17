@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 18:45:35 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/15 18:34:36 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/17 14:45:01 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ int	second_step(t_check *check, int len, long *a)
 			while (check->b->content != a[i])
 			{
 				count ++;
-				rx(check, "rb");
+				rx(check, "rb", 'p');
 			}
 			if (check->b->content == a[i])
 			{
 				count ++;
-				pa(check);
+				px(check, "pa", 'p');
 			}
 		}
 		else
@@ -61,12 +61,12 @@ int	second_step(t_check *check, int len, long *a)
 			while (check->b->content != a[i])
 			{
 				count ++;
-				rrx(check, "rrb");
+				rrx(check, "rrb", 'p');
 			}
 			if (check->b->content == a[i])
 			{
 				count ++;
-				pa(check);
+				px(check, "pa", 'p');
 			}
 		}
 		i--;

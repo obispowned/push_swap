@@ -6,22 +6,24 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 16:13:05 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/15 18:31:20 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/17 13:56:45 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-int	rrx(t_check *check, char *line)
+int	rrx(t_check *check, char *line, char ps)
 {
 	if (strcmp((const char *)line, "rra") == 0)
 	{
-		write(1, "rra\n", 4);
+		if (ps == 'p')
+			write(1, "rra\n", 4);
 		return (rra(check));
 	}
 	else if (strcmp((const char *)line, "rrb") == 0)
 	{
-		write(1, "rrb\n", 4);
+		if (ps == 'p')
+			write(1, "rrb\n", 4);
 		return (rrb(check));
 	}
 	else if (strcmp((const char *)line, "rrr") == 0)
@@ -43,8 +45,6 @@ int	rra(t_check *check)
 			aux = aux->next;
 		aux->next = NULL;
 	}
-	else
-		return (print_error("Error en: rra\n"));
 	return (0);
 }
 
@@ -61,8 +61,6 @@ int	rrb(t_check *check)
 			aux = aux->next;
 		aux->next = NULL;
 	}
-	else
-		return (print_error("Error en: rrb\n"));
 	return (0);
 }
 
@@ -70,6 +68,6 @@ int	rrr(t_check *check)
 {
 	rra(check);
 	rrb(check);
-	write(1, "rrr\n", 4);
+//	write(1, "rrr\n", 4);
 	return (0);
 }

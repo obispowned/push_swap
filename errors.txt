@@ -5,3 +5,12 @@
 
 /*********************Ejecutar ejemplo***************************/
 ARG=$(ruby -e "puts (0..99).to_a.shuffle.join(' ')") && ./push_swap $ARG | ./checker $ARG
+
+
+
+
+COMANDOS utilizados:
+ARG=$(ruby -e "puts (0..99).to_a.shuffle.join(' ')") && ./push_swap $ARG | wc -l
+
+
+para contar las lineas y comandos utilizados: wc -l
