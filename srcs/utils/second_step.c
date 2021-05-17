@@ -29,46 +29,57 @@ int	give_me_the_next_num(t_check *check, long a)
 	return (i);
 }
 
+int	second_step2(t_check *check, long *a, int i)
+{
+	int count;
+
+	count = 0;
+	while (check->b->content != a[i])
+	{
+		count ++;
+		rx(check, "rb", 'p');
+	}
+	if (check->b->content == a[i])
+	{
+		count ++;
+		px(check, "pa", 'p');
+	}
+	return (count);
+}
+
+int	second_step3(t_check *check, long *a, int i)
+{
+	int count;
+
+	count = 0;
+	while (check->b->content != a[i])
+	{
+		count ++;
+		rrx(check, "rrb", 'p');
+	}
+	if (check->b->content == a[i])
+	{
+		count ++;
+		px(check, "pa", 'p');
+	}
+	return (count);
+}
+
 int	second_step(t_check *check, int len, long *a)
 {
-	t_stack	*stack;
 	int		i;
 	int		z;
 	int		count;
 
 	count = 0;
-	stack = check->b;
 	i = len - 1;
 	while (i >= 0)
 	{
-		stack = check->b;
 		z = give_me_the_next_num(check, a[i]);
 		if (z <= (ft_lstlen(check->b) / 2))
-		{
-			while (check->b->content != a[i])
-			{
-				count ++;
-				rx(check, "rb", 'p');
-			}
-			if (check->b->content == a[i])
-			{
-				count ++;
-				px(check, "pa", 'p');
-			}
-		}
+			second_step2(check, a, i);
 		else
-		{
-			while (check->b->content != a[i])
-			{
-				count ++;
-				rrx(check, "rrb", 'p');
-			}
-			if (check->b->content == a[i])
-			{
-				count ++;
-				px(check, "pa", 'p');
-			}
-		}
+			second_step3(check, a, i);
 		i--;
 	}
 	return (count);

@@ -12,61 +12,68 @@
 
 #include "../../headers/push_swap.h"
 
+int	second_step_500_2(t_check *check, long *a, int i)
+{
+	int	counter;
+
+	counter = 0;
+	while (check->b->content != a[i])
+	{
+		counter ++;
+		rx(check, "rb", 'p');
+	}
+	if (check->b->content == a[i])
+	{
+		counter ++;
+		px(check, "pa", 'p');
+	}
+	return (counter);
+}
+
+int	second_step_500_3(t_check *check, long *a, int i)
+{
+	int	counter;
+	
+	counter = 0;
+	while (check->b->content != a[i])
+	{
+		counter ++;
+		rrx(check, "rrb", 'p');
+	}
+	if (check->b->content == a[i])
+	{
+		counter ++;
+		px(check, "pa", 'p');
+	}
+	return (counter);
+}
+
 int	second_step_500(t_check *check, int len, long *a)
 {
-	t_stack	*stack;
 	int		i;
 	int		z;
 	int		counter;
 
 	counter = 0;
-	stack = check->b;
 	i = len - 1;
 	while (i >= 0)
 	{
-		stack = check->b;
 		z = give_me_the_next_num(check, a[i]);
 		if (z <= (ft_lstlen(check->b) / 2))
-		{
-			while (check->b->content != a[i])
-			{
-				counter ++;
-				rx(check, "rb", 'p');
-			}
-			if (check->b->content == a[i])
-			{
-				counter ++;
-				px(check, "pa", 'p');
-			}
-		}
+			counter += second_step_500_2(check, a, i);
 		else
-		{
-			while (check->b->content != a[i])
-			{
-				counter ++;
-				rrx(check, "rrb", 'p');
-			}
-			if (check->b->content == a[i])
-			{
-				counter ++;
-				px(check, "pa", 'p');
-			}
-		}
+			counter += second_step_500_3(check, a, i);
 		i--;
 	}
 	return (counter);
 }
 
-void	search_me_hold_500(t_check	*check, int len, int multiplicador)
+int	smh2(t_check *check, int len, int multiplicador)
 {
-	t_stack	*aux;
+	t_stack *aux;
 	int		i;
-	int		j;
-	int		z;
 
 	i = 0;
-	j = 0;
-	z = 0;
 	aux = check->a;
 	while (aux)
 	{
@@ -78,6 +85,17 @@ void	search_me_hold_500(t_check	*check, int len, int multiplicador)
 		}
 		aux = aux->next;
 	}
+	return (i);
+}
+
+int	smh3(t_check *check, int len, int multiplicador)
+{
+	t_stack *aux;
+	int		j;
+	int		z;
+
+	z = 0;
+	j = 0;
 	aux = check->a;
 	while (aux)
 	{
@@ -89,8 +107,51 @@ void	search_me_hold_500(t_check	*check, int len, int multiplicador)
 		}
 		aux = aux->next;
 	}
-	check->first_position = i;
-	check->second_position = z;
+	return (z);
+}
+
+void	search_me_hold_500(t_check	*check, int len, int multiplicador)
+{
+	check->first_position = smh2(check, len, multiplicador);
+	check->second_position = smh3(check, len, multiplicador);
+}
+
+int	first_step_500_2(t_check *check, int *i)
+{
+	int	counter;
+
+	counter = 0;
+	while (check->a->content != check->hold_first)
+	{
+		rx(check, "ra", 'p');
+		counter ++;
+	}
+	if ((check->a->content) == (check->hold_first))
+	{
+		counter ++;
+		px(check, "pb", 'p');
+		(*i)++;
+	}
+	return(counter);
+}
+
+int	first_step_500_3(t_check *check, int *i)
+{
+	int	counter;
+
+	counter = 0;
+	while (check->a->content != check->hold_second)
+	{
+		rrx(check, "rra", 'p');
+		counter ++;
+	}
+	if ((check->a->content) == (check->hold_second))
+	{
+		counter ++;
+		px(check, "pb", 'p');
+		i++;
+	}
+	return (counter);
 }
 
 int	first_step_500(t_check *check, int len)
@@ -108,33 +169,9 @@ int	first_step_500(t_check *check, int len)
 		{
 			search_me_hold_500(check, len, multiplicador);
 			if (check->first_position <= (len - check->second_position))
-			{
-				while (check->a->content != check->hold_first)
-				{
-					rx(check, "ra", 'p');
-					counter ++;
-				}
-				if ((check->a->content) == (check->hold_first))
-				{
-					counter ++;
-					px(check, "pb", 'p');
-					i++;
-				}
-			}
+				counter += first_step_500_2(check, &i);
 			else
-			{
-				while (check->a->content != check->hold_second)
-				{
-					rrx(check, "rra", 'p');
-					counter ++;
-				}
-				if ((check->a->content) == (check->hold_second))
-				{
-					counter ++;
-					px(check, "pb", 'p');
-					i++;
-				}
-			}
+				counter += first_step_500_3(check, &i);
 		}
 		multiplicador++;
 	}
@@ -172,11 +209,9 @@ int	the_last_numbers_500(t_check *check, int len)
 
 void	order_500(t_check *check, long	*a)
 {
-	t_stack	*stack;
 	int		len;
 	int		counter;
 
-	stack = check->a;
 	len = ft_lstlen(check->a);
 	counter = first_step_500(check, len);
 	counter += second_step_500(check, len, a);

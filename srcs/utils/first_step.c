@@ -65,6 +65,44 @@ void	search_me_hold(t_check	*check, int len, int multiplicador)
 	check->second_position = z;
 }
 
+int	first_step2(t_check *check, int *i)
+{
+	int count;
+
+	count = 0;
+	while (check->a->content != check->hold_first)
+	{
+		rx(check, "ra", 'p');
+		count ++;
+	}
+	if ((check->a->content) == (check->hold_first))
+	{
+		count ++;
+		px(check, "pb", 'p');
+		(*i)++;
+	}
+	return (count);
+}
+
+int	first_step3(t_check *check, int *i)
+{
+	int count;
+
+	count = 0;
+	while (check->a->content != check->hold_second)
+	{
+		rrx(check, "rra", 'p');
+		count ++;
+	}
+	if ((check->a->content) == (check->hold_second))
+	{
+		count ++;
+		px(check, "pb", 'p');
+		(*i)++;
+	}
+	return(count);
+}
+
 int	first_step(t_check *check, int len)
 {
 	int		i;
@@ -80,33 +118,9 @@ int	first_step(t_check *check, int len)
 		{
 			search_me_hold(check, len, multiplicador);
 			if (check->first_position <= (len - check->second_position))
-			{
-				while (check->a->content != check->hold_first)
-				{
-					rx(check, "ra", 'p');
-					count ++;
-				}
-				if ((check->a->content) == (check->hold_first))
-				{
-					count ++;
-					px(check, "pb", 'p');
-					i++;
-				}
-			}
+				count += first_step2(check, &i);
 			else
-			{
-				while (check->a->content != check->hold_second)
-				{
-					rrx(check, "rra", 'p');
-					count ++;
-				}
-				if ((check->a->content) == (check->hold_second))
-				{
-					count ++;
-					px(check, "pb", 'p');
-					i++;
-				}
-			}
+				count += first_step3(check, &i);
 		}
 		multiplicador++;
 	}
@@ -144,12 +158,10 @@ int	the_last_numbers(t_check *check, int len)
 
 void	order_100(t_check *check, long	*a)
 {
-	t_stack	*stack;
 	int		len;
 	int		count;
 
 	count = 0;
-	stack = check->a;
 	len = ft_lstlen(check->a);
 	if (!(is_this_order(check->a)))
 	{

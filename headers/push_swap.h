@@ -77,6 +77,8 @@ int				the_last_numbers(t_check *check, int len);
 int				is_this_order(t_stack *stack);
 int				give_me_the_next_num(t_check *check, long a);
 int				second_step(t_check *check, int len, long *a);
+int             second_step2(t_check *check, long *a, int i);
+int             second_step3(t_check *check, long *a, int i);
 
 void			search_me_hold_500(t_check	*check, int len, int multiplicador);
 int				first_step_500(t_check *check, int len);

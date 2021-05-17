@@ -31,14 +31,22 @@ int	one_arg(int argc, char **file, t_check *check)
 	return (0);
 }
 
+char	**arg_malloc(char **argv, int argc)
+{
+	char		**check_nums;
+
+	check_nums = malloc (sizeof(char *) * argc);
+	check_nums[0] = ft_strdup(argv[1]);
+	return (check_nums);
+}
+
 int	args(int argc, char **argv, t_check *check)
 {
 	int			i;
 	long long	j;
 	char		**check_nums;
 
-	check_nums = malloc (sizeof(char *) * argc);
-	check_nums[0] = ft_strdup(argv[1]);
+	check_nums = arg_malloc(argv, argc);
 	i = 2;
 	if (isallnum_and_minus(argv[1]) == 1)
 		return (1);
