@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:37 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/18 17:28:58 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:52:47 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,7 @@ int				order_3_c231(t_check *check);
 
 void			tell_me_the_positions(t_stack	**stack, long *a);
 void			double_kill(char **str);
+
+int				check_limit(char *str);
 
 #endif
