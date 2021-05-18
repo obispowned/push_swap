@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 20:29:53 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/18 17:56:16 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 20:03:36 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	one_arg(int argc, char **file, t_check *check)
 	long long	j;
 
 	(void)argc;
-	if (check_limit(file[0]) > 9)
+	if ((check_limit(file[0])) > 9)
 		return (print_error("Error\n"));
 	j = atol(file[0]);
 	i = 1;

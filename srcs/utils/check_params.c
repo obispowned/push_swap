@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   check_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/25 20:24:46 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/18 19:23:34 by agutierr         ###   ########.fr       */
+/*   Created: 2021/05/18 18:26:28 by agutierr          #+#    #+#             */
+/*   Updated: 2021/05/18 19:35:05 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-int	main(int	argc, char	**argv)
+int	check_params2(char **file)
 {
-	t_check	check;
-	char	**file;
+	int	i;
 
-	file = NULL;
-	check.b = NULL;
-	if (check_args(argc, argv) == 1)
-		return (print_error("Error\n"));
-	if (argc == 2)
-		check_params(file, argc, argv, &check);
-	else
+	i = 0;
+	while (file[i])
 	{
-		if (!(no_repeated_numbers(&argv[1])))
-			return (print_error ("Error\n"));
-		if (args(argc, argv, &check) == 1)
-			return (print_error("Error\n"));
+		if (ft_strlen(file[i]) > 10)
+			return (0);
+		i++;
 	}
-	ia_order (&check);
-	return (0);
+	return (1);
+}
+
+void	check_params(char **file, int argc, char **argv, t_check *check)
+{
+	file = ft_split(argv[1], ' ');
+	if (check_limit(file[0]) > 9)
+		print_exit("Error\n");
+	if (!(no_repeated_numbers(file)))
+		print_exit("Error\n");
+	one_arg(argc, file, check);
+	double_kill(file);
 }

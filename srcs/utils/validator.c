@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 15:07:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/18 17:30:14 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 18:31:53 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*check_OK_KO(t_stack **stack)
 
 	i = 0;
 	tmp = *stack;
-	if (tmp)
+	if (tmp && tmp->next)
 	{
 		i = tmp->content;
 		tmp = tmp->next;
@@ -76,6 +76,8 @@ char	*check_OK_KO(t_stack **stack)
 		if (i > tmp->content)
 			return ("KO\n");
 	}
+	else if (tmp && !(tmp->next))
+		return ("OK\n");
 	else
 		return ("KO\n");
 	return ("OK\n");

@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:20:25 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/18 17:10:49 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 20:48:49 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	size_t	j;
 
+	if (s == NULL)
+		return (NULL);
 	tab_counter = count_segment(s, c);
 	strs = (char **)malloc(sizeof(char *) * (tab_counter + 1));
-	if (!strs || !s)
-		return (NULL);
 	tab_counter = 0;
 	j = -1;
 	while (s[++j])
@@ -82,8 +82,8 @@ char	**ft_split(char const *s, char c)
 		i = 0;
 		while (s[j + i] && s[j + i] != c)
 			i++;
-		strs[tab_counter++] = ft_strndup(&s[j], i);
-		if (strs[tab_counter] == NULL)
+		strs[tab_counter] = ft_strndup(&s[j], i);
+		if (strs[tab_counter++] == NULL)
 			return (destroy_strs(strs));
 		j += i - 1;
 	}
