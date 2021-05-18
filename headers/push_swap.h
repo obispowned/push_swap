@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:32:37 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/17 17:10:59 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:28:58 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,22 @@ char			*check_OK_KO(t_stack **stack);
 int				check_stdin(t_check *check);
 
 void			tell_me_the_positions(t_stack	**stack, long *a);
-void			search_me_hold(t_check	*check, int len, int multiplicador);
 int				first_step(t_check *check, int len);
 int				the_last_numbers(t_check *check, int len);
 
 int				is_this_order(t_stack *stack);
 int				give_me_the_next_num(t_check *check, long a);
 int				second_step(t_check *check, int len, long *a);
-int             second_step2(t_check *check, long *a, int i);
-int             second_step3(t_check *check, long *a, int i);
+int				second_step2(t_check *check, long *a, int i);
+int				second_step3(t_check *check, long *a, int i);
 
+void			search_me_hold(t_check	*check, int len, int multiplicador);
+int				smh2(t_check *check, int len, int multiplicador);
+int				smh3(t_check *check, int len, int multiplicador);
 void			search_me_hold_500(t_check	*check, int len, int multiplicador);
+int				smh2_500(t_check *check, int len, int multiplicador);
+int				smh3_500(t_check *check, int len, int multiplicador);
+
 int				first_step_500(t_check *check, int len);
 int				the_last_numbers_500(t_check *check, int len);
 int				second_step_500(t_check *check, int len, long *a);
@@ -91,6 +96,7 @@ int				order_3_c312(t_check *check);
 int				order_3_c132(t_check *check);
 int				order_3_c231(t_check *check);
 
+void			tell_me_the_positions(t_stack	**stack, long *a);
 void			double_kill(char **str);
 
 #endif

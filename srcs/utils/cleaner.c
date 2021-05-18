@@ -6,21 +6,21 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 15:54:39 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/17 17:04:44 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:15:06 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-void		double_kill(char **str)
+void	double_kill(char **str)
 {
-		int i;
+	int	i;
 
-		i = 0;
-		while (str[i])
-		{
-			free(str[i]);
-			i++;
-		}
-		free(str);
+	i = 0;
+	while (str[i])
+	{
+		free (str[i]);
+		i++;
+	}
+	free (str);
 }

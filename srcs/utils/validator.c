@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 15:07:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/17 13:09:20 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:30:14 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	*check_OK_KO(t_stack **stack)
 
 int	is_this_order(t_stack *stack)
 {
-	t_stack *aux;
+	t_stack	*aux;
 
 	aux = stack;
 	while (aux)

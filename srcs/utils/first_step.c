@@ -6,68 +6,15 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 18:43:24 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/17 15:11:45 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:28:11 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/push_swap.h"
 
-void	tell_me_the_positions(t_stack	**stack, long *a)
-{
-	t_stack	*aux;
-	int		i;
-
-	aux = *stack;
-	while (aux)
-	{
-		i = 0;
-		while (a[i] != aux->content)
-			i++;
-		if (a[i] == aux->content)
-			aux->position = i + 1;
-		aux = aux->next;
-	}
-}
-
-void	search_me_hold(t_check	*check, int len, int multiplicador)
-{
-	t_stack	*aux;
-	int		i;
-	int		j;
-	int		z;
-
-	i = 0;
-	j = 0;
-	z = 0;
-	aux = check->a;
-	while (aux)
-	{
-		i++;
-		if (aux->position <= ((len / 5) * multiplicador))
-		{
-			check->hold_first = aux->content;
-			break ;
-		}
-		aux = aux->next;
-	}
-	aux = check->a;
-	while (aux)
-	{
-		j++;
-		if (aux->position <= ((len / 5) * multiplicador))
-		{
-			check->hold_second = aux->content;
-			z = j;
-		}
-		aux = aux->next;
-	}
-	check->first_position = i;
-	check->second_position = z;
-}
-
 int	first_step2(t_check *check, int *i)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (check->a->content != check->hold_first)
@@ -86,7 +33,7 @@ int	first_step2(t_check *check, int *i)
 
 int	first_step3(t_check *check, int *i)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (check->a->content != check->hold_second)
@@ -100,7 +47,7 @@ int	first_step3(t_check *check, int *i)
 		px(check, "pb", 'p');
 		(*i)++;
 	}
-	return(count);
+	return (count);
 }
 
 int	first_step(t_check *check, int len)

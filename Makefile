@@ -6,7 +6,7 @@
 #    By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/24 16:02:20 by agutierr          #+#    #+#              #
-#    Updated: 2021/05/17 15:55:37 by agutierr         ###   ########.fr        #
+#    Updated: 2021/05/18 17:27:16 by agutierr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRCS_UTILS		=	./srcs/utils/args.c ./srcs/utils/first_step.c\
 					./srcs/utils/push.c ./srcs/utils/reverse_rotate.c\
 					./srcs/utils/rotate.c ./srcs/utils/second_step.c\
 					./srcs/utils/swap.c ./srcs/utils/validator.c\
-					./srcs/utils/cleaner.c\
+					./srcs/utils/cleaner.c ./srcs/utils/search_me_hold.c\
+					./srcs/utils/search_me_hold_500.c\
+					./srcs/utils/second_step_500.c ./srcs/utils/stdin.c\
 
 SANITIZE		=	-fsanitize=address
 

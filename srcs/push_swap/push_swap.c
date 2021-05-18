@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 20:24:46 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/17 17:15:38 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:26:21 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int	argc, char	**argv)
 		if (args(argc, argv, check) == 1)
 			return (print_error("Error\n"));
 	}
-	system("leaks push_swap");
 	ia_order (check);
+	system("leaks push_swap");
 	return (0);
 }
