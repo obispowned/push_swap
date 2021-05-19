@@ -6,7 +6,7 @@
 /*   By: agutierr <agutierr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 20:25:17 by agutierr          #+#    #+#             */
-/*   Updated: 2021/05/18 18:22:12 by agutierr         ###   ########.fr       */
+/*   Updated: 2021/05/19 19:22:08 by agutierr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	main(int argc, char **argv)
 
 	file = NULL;
 	check.b = NULL;
-	if ((argv[1]) && ((ft_strlen(argv[1]) == 0)))
-		exit(0);
+	if (argc == 1)
+		exit(1);
+	if (argv[1] && strcmp(argv[1], "") == 0)
+		print_exit("Error\n");
 	if (check_args(argc, argv) == 1)
 		return (print_error("Error\n"));
 	if (argc == 2)
