@@ -58,6 +58,38 @@ char	**arg_malloc(char **argv, int argc)
 	return (check_nums);
 }
 
+
+int	valid_argum(char *arg)
+{
+	int i;
+	int flag_sign;
+
+	flag_sign = 0;
+	i = 0;
+	while (arg[i])
+	{
+		if (arg[i] == '-' || arg[i] == '+')
+		{
+			flag_sign ++;
+			if (flag_sign == 2)
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+long long	valid_and_convert(char *arg)
+{
+	long long j;
+
+	if (!valid_argum(arg))
+		exit (1);
+	j = atol(arg);
+	return (j);
+}
+
+
 int	args(int argc, char **argv, t_check *check)
 {
 	int			i;
@@ -68,7 +100,7 @@ int	args(int argc, char **argv, t_check *check)
 		return (1);
 	if (check_limit(argv[1]) > 9)
 		return (print_error("Error\n"));
-	j = atol(argv[1]);
+	j = valid_and_convert(argv[1]);
 	if (j > 2147483647 || j < -2147483648)
 		return (print_error("Error\n"));
 	check->a = ft_lstnew(j);

@@ -43,14 +43,21 @@ int	isallnum_and_spa(char *file)
 int	isallnum_and_minus(char *file)
 {
 	int	i;
+	int flag_sign;
 
+	flag_sign = 0;
 	i = 0;
 	while (file[i])
 	{
-		if ((file[i] > '9' || file[i] < '0') && (file[i] != '-'))
+		if (file[i] == '-' || file[i] == '+')
+			flag_sign ++;
+		if ((file[i] > '9' || file[i] < '0')
+			&& (file[i] != '-') && (file[i] != '+'))
 			return (1);
 		i++;
 	}
+	if (flag_sign > 1)
+		return(1);
 	return (0);
 }
 
@@ -61,8 +68,8 @@ int	isallnum_and_spa_and_minus(char *file)
 	i = 0;
 	while (file[i])
 	{
-		if ((file[i] > '9' || file[i] < '0')
-			&& (file[i] != ' ') && (file[i] != '-'))
+		if ((file[i] > '9' || file[i] < '0') && (file[i] != ' ')
+			&& (file[i] != '-') && (file[i] != '+'))
 			return (1);
 		i++;
 	}
