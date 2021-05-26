@@ -26,10 +26,26 @@ int	check_params2(char **file)
 	return (1);
 }
 
+int		check_only_spaces(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] != ' ') && (str[i] != '+') & (str[i] != '-'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	check_params(char **file, int argc, char **argv, t_check *check)
 {
+	if (check_only_spaces(argv[1]) == 1)
+		print_exit("Error\n");
 	file = ft_split(argv[1], ' ');
-	if (check_limit(file[0]) > 9)
+	if (check_limit(file[0]) > 15)
 		print_exit("Error\n");
 	if (!(no_repeated_numbers(file)))
 		print_exit("Error\n");

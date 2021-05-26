@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		if (!(no_repeated_numbers(&argv[1])))
 			return (print_error("Error\n"));
 		if (args(argc, argv, &check) == 1)
-			return (print_error("Error\n"));
+			return (1);
 	}
 	if (check_stdin (&check) == 1)
 		return (1);

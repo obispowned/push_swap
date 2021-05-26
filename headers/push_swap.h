@@ -52,7 +52,7 @@ int				rra(t_check *check);
 int				rrb(t_check *check);
 int				rrr(t_check *check);
 
-void			order_500(t_check *check, long	*a);
+void            order_500(t_check *check, long	*a);
 void			order_100(t_check *check, long *a);
 void			order_5(t_check *check, long *a);
 void			order_4(t_check *check, long *a);
@@ -90,6 +90,7 @@ void			first_step_500(t_check *check, int len);
 void			the_last_numbers_500(t_check *check, int len);
 void			second_step_500(t_check *check, int len, long *a);
 
+int		        check_only_spaces(char *str);
 int				order_3_c213(t_check *check);
 int				order_3_c321(t_check *check);
 int				order_3_c312(t_check *check);

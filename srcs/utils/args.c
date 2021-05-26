@@ -34,15 +34,19 @@ int	one_arg(int argc, char **file, t_check *check)
 	long long	j;
 
 	(void)argc;
-	if ((check_limit(file[0])) > 9)
+	if ((check_limit(file[0])) > 15)
 		return (print_error("Error\n"));
+	if (isallnum_and_minus(file[0]) == 1)
+		print_exit("Error\n");
 	j = atol(file[0]);
 	i = 1;
 	if (j > 2147483647 || j < -2147483648)
-		return (print_error("Error\n"));
+		print_exit("Error\n");
 	check->a = ft_lstnew (j);
 	while (file[i])
 	{
+		if (isallnum_and_minus(file[i]) == 1)
+			print_exit("Error\n");
 		ft_lstadd_back(&check->a, ft_lstnew(atol(file[i])));
 		i++;
 	}
@@ -97,8 +101,8 @@ int	args(int argc, char **argv, t_check *check)
 
 	i = 2;
 	if (isallnum_and_minus(argv[1]) == 1)
-		return (1);
-	if (check_limit(argv[1]) > 9)
+		print_exit("Error\n");
+	if (check_limit(argv[1]) > 15)
 		return (print_error("Error\n"));
 	j = valid_and_convert(argv[1]);
 	if (j > 2147483647 || j < -2147483648)
@@ -107,8 +111,8 @@ int	args(int argc, char **argv, t_check *check)
 	while (i < argc)
 	{
 		if (isallnum_and_minus(argv[i]) == 1)
-			return (1);
-		if (check_limit(argv[i]) > 9)
+			print_exit("Error\n");
+		if (check_limit(argv[i]) > 15)
 			return (print_error("Error\n"));
 		j = atol(argv[i]);
 		if (j > 2147483647 || j < -2147483648)
